@@ -23,7 +23,7 @@ export function StudioHome() {
   }, [overlayOpen]);
   return <>
     <Header menuOpen={menuOpen} onToggleMenu={() => setMenuOpen(!menuOpen)} onCloseMenu={() => setMenuOpen(false)} />
-    <main className="w-full overflow-hidden">
+    <main className="w-full overflow-hidden bg-background text-foreground">
       <Hero />
       <Showreel suspended={overlayOpen} onPlay={() => setSelection({ kind: "reel" })} />
       <About />
