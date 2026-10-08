@@ -6,6 +6,7 @@ import { Showreel } from "./showreel";
 import { Portfolio } from "./portfolio";
 import { About, Contact, Footer, Services, Ticker } from "./studio-sections";
 import { MediaDialog, type MediaSelection } from "./media-dialog";
+import { PointerGlow } from "./pointer-glow";
 
 export function StudioHome() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,6 +23,7 @@ export function StudioHome() {
     return () => { document.body.style.overflow = previousOverflow; window.removeEventListener("keydown", onEscape); };
   }, [overlayOpen]);
   return <>
+    <PointerGlow />
     <Header menuOpen={menuOpen} onToggleMenu={() => setMenuOpen(!menuOpen)} onCloseMenu={() => setMenuOpen(false)} />
     <main className="w-full overflow-hidden bg-background text-foreground">
       <Hero />

@@ -2,7 +2,7 @@ import type { ComponentProps, ReactNode } from "react";
 
 export const buttonStyles = "cursor-pointer transition-all duration-250 ease-out hover:border-brand hover:bg-brand hover:text-black focus-visible:border-brand focus-visible:bg-brand focus-visible:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none";
 export const sectionStyles = "px-[5%] py-[65px] min-[751px]:px-[4.5%] min-[751px]:py-[85px] min-[1101px]:py-[115px]";
-export const headingStyles = "text-[clamp(34px,7.2vw,52px)] leading-[1.08] font-normal tracking-[-1.8px] min-[751px]:text-[clamp(38px,4.6vw,74px)] min-[751px]:tracking-[-2.9px]";
+export const headingStyles = "font-heading text-[clamp(34px,7.2vw,52px)] leading-[1.08] font-normal tracking-normal min-[751px]:text-[clamp(38px,4.6vw,74px)]";
 
 export function Button({ className = "", ...props }: ComponentProps<"button">) {
   return <button className={`${buttonStyles} ${className}`} {...props} />;

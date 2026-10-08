@@ -9,6 +9,8 @@
   --color-line: #2c2c27;
   --font-sans: Arial, Helvetica, sans-serif;
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-anton), Arial, sans-serif;
+  --font-display: var(--font-luckiest-guy), Arial, sans-serif;
 }
 
 @theme {
