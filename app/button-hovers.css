@@ -1,0 +1,110 @@
+/* Shared motion and brand colours for buttons and button-style links. */
+button,
+.contact-link,
+.text-link,
+.round-link,
+.contact-circle,
+.service-list summary {
+  transition: background-color 250ms ease, color 250ms ease,
+    border-color 250ms ease, box-shadow 250ms ease, transform 250ms ease;
+}
+
+.contact-link,
+.text-link {
+  padding: 10px 12px;
+  border-radius: 3px;
+}
+
+.menu-button {
+  width: 36px;
+  min-height: 36px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+}
+
+.menu-button span,
+.project-info,
+.project-info span,
+.project-info h3,
+.service-list h3,
+.service-plus,
+.text-link span,
+.contact-link span,
+.round-link span,
+.play-circle {
+  transition: background-color 250ms ease, color 250ms ease,
+    border-color 250ms ease, transform 250ms ease;
+}
+
+button:hover,
+button:focus-visible,
+.contact-link:hover,
+.contact-link:focus-visible,
+.text-link:hover,
+.text-link:focus-visible,
+.round-link:hover,
+.round-link:focus-visible,
+.contact-circle:hover,
+.contact-circle:focus-visible,
+.service-list summary:hover,
+.service-list summary:focus-visible {
+  background-color: var(--yellow) !important;
+  color: var(--black);
+  border-color: var(--yellow);
+}
+
+button:not(.reel-image):hover span,
+button:not(.reel-image):focus-visible span,
+.contact-link:hover span,
+.contact-link:focus-visible span,
+.text-link:hover span,
+.text-link:focus-visible span,
+.round-link:hover span,
+.round-link:focus-visible span,
+.project:hover .project-info h3,
+.project:focus-visible .project-info h3,
+.service-list summary:hover h3,
+.service-list summary:hover span,
+.service-list summary:focus-visible h3,
+.service-list summary:focus-visible span {
+  color: var(--black);
+}
+
+.menu-button:hover span,
+.menu-button:focus-visible span {
+  background-color: var(--black);
+}
+
+.project-info {
+  padding-inline: 12px;
+}
+
+.project:hover .project-number,
+.project:focus-visible .project-number,
+.reel-image:hover .play-circle,
+.reel-image:focus-visible .play-circle {
+  background-color: var(--yellow);
+  color: var(--black);
+  border-color: var(--yellow);
+}
+
+.reel-image:hover .play-circle,
+.reel-image:focus-visible .play-circle {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.modal-close:hover,
+.modal-close:focus-visible {
+  transform: rotate(90deg);
+}
+
+.service-list summary {
+  padding-inline: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+  }
+}
