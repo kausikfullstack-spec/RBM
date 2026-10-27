@@ -8,6 +8,8 @@ import { About, Contact, Footer, Services, Ticker } from "./studio-sections";
 import { MediaDialog, type MediaSelection } from "./media-dialog";
 import { PointerGlow } from "./pointer-glow";
 import { SocialSidebar } from "./social-sidebar";
+import { WhyUs } from "./why-us";
+import { Skiper39 } from "./ui/skiper39";
 
 export function StudioHome() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,6 +34,8 @@ export function StudioHome() {
       <Showreel suspended={overlayOpen} onPlay={() => setSelection({ kind: "reel" })} />
       <About />
       <Ticker />
+      <WhyUs />
+      <Skiper39 />
       <Portfolio onSelect={project => setSelection({ kind: "project", project })} />
       <Services />
       <Contact />
