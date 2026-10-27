@@ -3,6 +3,7 @@
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { FiPause, FiPlay } from "react-icons/fi";
+import { BrandDifferences } from "../brand-differences";
 
 interface CrowdCanvasProps {
   src: string;
@@ -116,12 +117,13 @@ export function CrowdCanvas({ src, rows = 15, cols = 7, paused = false }: CrowdC
 
 export function Skiper39() {
   const [paused, setPaused] = useState(false);
-  return <section aria-labelledby="crowd-heading" className="relative isolate h-[480px] overflow-hidden bg-brand text-black min-[751px]:h-[560px]">
+  return <section aria-labelledby="crowd-heading" className="relative isolate mt-16 overflow-hidden bg-brand text-black min-[751px]:mt-24">
     <div className="relative z-10 mx-auto max-w-[760px] px-6 pt-12 text-center min-[751px]:pt-16">
       <p className="text-[9px] tracking-[2px]">FRESH THINKING. DISTINCTIVE BRANDS.</p>
       <h2 id="crowd-heading" className="mt-4 font-heading text-[clamp(32px,4.5vw,64px)] leading-[1.06]">Give your brand<br />a place in the crowd.<br /><span className="text-black/60">And a reason to stand out.</span></h2>
     </div>
-    <div className="absolute inset-x-0 bottom-0 h-[45%] overflow-hidden"><CrowdCanvas src="/illustrations/crowd.png" paused={paused} /></div>
+    <BrandDifferences />
+    <div className="relative h-[230px] overflow-hidden min-[751px]:h-[280px]"><CrowdCanvas src="/illustrations/crowd.png" paused={paused} /></div>
     <div className="absolute top-5 right-5 z-20">
       <button type="button" onClick={() => setPaused(value => !value)} aria-label={paused ? "Play crowd animation" : "Pause crowd animation"} aria-pressed={paused} className="grid size-9 shrink-0 place-items-center rounded-full border border-black/40 hover:bg-black hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black motion-reduce:hidden">
         {paused ? <FiPlay aria-hidden="true" /> : <FiPause aria-hidden="true" />}

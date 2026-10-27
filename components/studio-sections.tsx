@@ -2,10 +2,9 @@ import { contactEmail, services } from "@/lib/content";
 import { ActionLink, Arrow, buttonStyles, headingStyles, sectionStyles, SectionLabel } from "./ui";
 
 export function About() {
-  return <section id="about" className={`${sectionStyles} grid gap-[30px] min-[751px]:grid-cols-[1fr_2.2fr] min-[751px]:gap-[6%]`}>
-    <div className="self-start min-[751px]:mt-3"><SectionLabel>THE STUDIO / 01</SectionLabel></div>
-    <div><h2 className={headingStyles}>Good stories don&apos;t<br />belong in the bin.<br /><span className="text-brand">They belong out there.</span></h2>
-      <div className="mt-7 flex items-center justify-between gap-[25px] min-[751px]:mt-[38px] min-[751px]:gap-[45px]"><p className="max-w-[430px] text-xs leading-[1.9] text-muted min-[751px]:text-sm">We&apos;re Recycle Bin Media. An independent creative production studio turning unexpected ideas into unforgettable visuals. From that first spark to the final cut, we make content with something to say.</p><ActionLink href="#contact" className="group flex size-[100px] shrink-0 items-center justify-center gap-[5px] rounded-full border border-[#515147] text-[10px] min-[751px]:size-[123px] min-[751px]:gap-[11px] min-[751px]:text-xs">Let&apos;s create<br />something<Arrow className="text-[25px] text-brand group-hover:text-black group-focus-visible:text-black" /></ActionLink></div>
+  return <section id="about" className={`${sectionStyles} text-center`}>
+    <div className="mx-auto max-w-[1000px]"><h2 className={headingStyles}>Good stories don&apos;t<br />belong in the bin.<br /><span className="text-brand">They belong out there.</span></h2>
+      <div className="mt-7 flex flex-col items-center gap-[25px] min-[751px]:mt-[38px] min-[751px]:gap-8"><p className="max-w-[520px] text-xs leading-[1.9] text-muted min-[751px]:text-sm">We&apos;re Recycle Bin Media. An independent creative production studio turning unexpected ideas into unforgettable visuals. From that first spark to the final cut, we make content with something to say.</p><ActionLink href="#contact" className="group flex size-[100px] shrink-0 items-center justify-center gap-[5px] rounded-full border border-[#515147] text-[10px] min-[751px]:size-[123px] min-[751px]:gap-[11px] min-[751px]:text-xs">Let&apos;s create<br />something<Arrow className="text-[25px] text-brand group-hover:text-black group-focus-visible:text-black" /></ActionLink></div>
     </div>
   </section>;
 }
@@ -14,7 +13,9 @@ export function Ticker() {
 }
 export function Services() {
   return <section id="services" className={`${sectionStyles} grid gap-[30px] border-t border-line min-[751px]:grid-cols-[1fr_1.4fr] min-[751px]:gap-[9%]`}>
-    <div className="relative"><SectionLabel>WHAT WE DO / 03</SectionLabel><h2 className={`${headingStyles} mt-[30px]`}>From <span className="text-brand">&ldquo;what if&rdquo;</span><br />to <span className="text-brand">&ldquo;that&apos;s it.&rdquo;</span></h2><p className="mt-[25px] text-[13px] leading-[1.8] text-muted">One creative partner.<br />Every part of the production.</p><span aria-hidden="true" className="absolute right-3 bottom-0 text-[85px] leading-none text-brand min-[751px]:static min-[751px]:mt-[25px] min-[751px]:inline-block min-[751px]:text-[110px]">&#10035;</span></div>
+    <div className="relative">
+      {/* <SectionLabel>WHAT WE DO / 03</SectionLabel> */}
+      <h2 className={`${headingStyles} mt-[30px]`}>From <span className="text-brand">&ldquo;what if&rdquo;</span><br />to <span className="text-brand">&ldquo;that&apos;s it.&rdquo;</span></h2><p className="mt-[25px] text-[13px] leading-[1.8] text-muted">One creative partner.<br />Every part of the production.</p><span aria-hidden="true" className="absolute right-3 bottom-0 text-[85px] leading-none text-brand min-[751px]:static min-[751px]:mt-[25px] min-[751px]:inline-block min-[751px]:text-[110px]">&#10035;</span></div>
     <div>{services.map((service, index) => <details key={service.title} className="group border-b border-line first:border-t"><summary className={`${buttonStyles} group/summary flex cursor-pointer list-none items-center gap-4 px-3 py-6 min-[751px]:gap-6 min-[751px]:py-[30px] [&::-webkit-details-marker]:hidden`}><span className="text-[10px] text-muted group-hover/summary:text-black group-focus-visible/summary:text-black">0{index + 1}</span><h3 className="font-heading flex-1 text-[17px] font-normal tracking-normal group-open:text-brand group-hover/summary:text-black group-focus-visible/summary:text-black min-[1101px]:text-xl">{service.title}</h3><span className="text-[25px] font-light text-brand transition-transform group-open:rotate-45 group-hover/summary:text-black group-focus-visible/summary:text-black">+</span></summary><p className="mb-[30px] ml-[38px] max-w-[440px] text-[13px] leading-[1.8] text-muted">{service.description}</p></details>)}</div>
   </section>;
 }

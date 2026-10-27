@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 
-export function FitWordmark({ children }: { children: ReactNode }) {
+export function FitWordmark({ children, fill = .99 }: { children: ReactNode; fill?: number }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export function FitWordmark({ children }: { children: ReactNode }) {
       text.style.fontSize = "100px";
       const naturalWidth = text.getBoundingClientRect().width;
       if (naturalWidth > 0) {
-        text.style.fontSize = `${Math.min(220, container.clientWidth / naturalWidth * 99)}px`;
+        text.style.fontSize = `${Math.min(220, container.clientWidth / naturalWidth * 100 * fill)}px`;
       }
     };
     const observer = new ResizeObserver(fit);
@@ -23,7 +23,7 @@ export function FitWordmark({ children }: { children: ReactNode }) {
     fit();
     void document.fonts.ready.then(fit);
     return () => { active = false; observer.disconnect(); };
-  }, []);
+  }, [fill]);
 
   return <div ref={ref} className="hero-wordmark">{children}</div>;
 }

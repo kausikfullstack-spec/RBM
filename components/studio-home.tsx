@@ -8,8 +8,9 @@ import { About, Contact, Footer, Services, Ticker } from "./studio-sections";
 import { MediaDialog, type MediaSelection } from "./media-dialog";
 import { PointerGlow } from "./pointer-glow";
 import { SocialSidebar } from "./social-sidebar";
-import { WhyUs } from "./why-us";
 import { Skiper39 } from "./ui/skiper39";
+import ClickSpark from "./ClickSpark";
+import { WhatsAppButton } from "./whatsapp-button";
 
 export function StudioHome() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,7 +26,7 @@ export function StudioHome() {
     window.addEventListener("keydown", onEscape);
     return () => { document.body.style.overflow = previousOverflow; window.removeEventListener("keydown", onEscape); };
   }, [overlayOpen]);
-  return <>
+  return <ClickSpark sparkColor="#fff" shape="line" sparkCount={8} sparkSize={14} sparkRadius={30} duration={500}>
     <PointerGlow />
     <div className="min-[1101px]:pr-20">
     <Header menuOpen={menuOpen} onToggleMenu={() => setMenuOpen(!menuOpen)} onCloseMenu={() => setMenuOpen(false)} />
@@ -34,7 +35,6 @@ export function StudioHome() {
       <Showreel suspended={overlayOpen} onPlay={() => setSelection({ kind: "reel" })} />
       <About />
       <Ticker />
-      <WhyUs />
       <Skiper39 />
       <Portfolio onSelect={project => setSelection({ kind: "project", project })} />
       <Services />
@@ -43,6 +43,7 @@ export function StudioHome() {
     <Footer />
     </div>
     <SocialSidebar hidden={overlayOpen} />
+    <WhatsAppButton hidden={overlayOpen} />
     {selection && <MediaDialog selection={selection} onClose={() => setSelection(null)} onPlay={() => setSelection({ kind: "reel" })} />}
-  </>;
+  </ClickSpark>;
 }

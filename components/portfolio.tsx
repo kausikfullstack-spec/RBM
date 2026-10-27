@@ -12,7 +12,9 @@ function ProjectCard({ project, index, onSelect }: { project: Project; index: nu
 }
 export function Portfolio({ onSelect }: { onSelect: (project: Project) => void }) {
   const [filter, setFilter] = useState("All work");
-  return <section id="work" className={sectionStyles}><div className="flex items-end justify-between"><div><SectionLabel>SELECTED WORK / 02</SectionLabel><h2 className={`${headingStyles} mt-[25px]`}>Made to <span className="text-brand">make a mark.</span></h2></div><span className="hidden text-[9px] leading-[1.8] tracking-[1.4px] text-muted min-[751px]:inline">A FEW FRAMES.<br />A WHOLE LOT OF FEELING.</span></div>
+  return <section id="work" className={sectionStyles}><div className="flex items-end justify-between"><div>
+    {/* <SectionLabel>SELECTED WORK / 02</SectionLabel> */}
+    <h2 className={`${headingStyles} mt-[25px]`}>Made to <span className="text-brand">make a mark.</span></h2></div><span className="hidden text-[9px] leading-[1.8] tracking-[1.4px] text-muted min-[751px]:inline">A FEW FRAMES.<br />A WHOLE LOT OF FEELING.</span></div>
     <div aria-label="Filter projects" className="mt-7 mb-6 flex flex-wrap gap-[7px] min-[751px]:mt-[38px] min-[751px]:mb-[30px] min-[751px]:gap-2.5">{["All work", "Brand film", "Corporate film", "Campaign film"].map(item => <Button key={item} aria-pressed={filter === item} onClick={() => setFilter(item)} className={`rounded-full border px-[13px] py-[9px] text-[10px] min-[751px]:px-5 min-[751px]:py-[11px] min-[751px]:text-[11px] ${filter === item ? "border-brand bg-brand text-black" : "border-line bg-transparent text-[#c3c3bc]"}`}>{item}{item === "All work" && <sup className="ml-2 text-[8px]">04</sup>}</Button>)}</div>
     <div className="grid grid-cols-1 gap-7 min-[751px]:grid-cols-2 min-[751px]:gap-x-[25px] min-[751px]:gap-y-11">{projects.map((project, index) => (filter === "All work" || filter === project.category) && <ProjectCard key={project.name} project={project} index={index} onSelect={() => onSelect(project)} />)}</div><p className="mt-[25px] text-[11px] text-muted">Sample projects and stock imagery. Your stories go here.</p>
   </section>;
