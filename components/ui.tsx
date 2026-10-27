@@ -1,4 +1,5 @@
 import type { ComponentProps, ReactNode } from "react";
+import Link from "next/link";
 
 export const buttonStyles = "cursor-pointer transition-all duration-250 ease-out hover:border-brand hover:bg-brand hover:text-black focus-visible:border-brand focus-visible:bg-brand focus-visible:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none";
 export const sectionStyles = "px-[5%] py-[65px] min-[751px]:px-[4.5%] min-[751px]:py-[85px] min-[1101px]:py-[115px]";
@@ -8,6 +9,7 @@ export function Button({ className = "", ...props }: ComponentProps<"button">) {
   return <button className={`${buttonStyles} ${className}`} {...props} />;
 }
 export function ActionLink({ className = "", ...props }: ComponentProps<"a">) {
+  if (props.href?.startsWith("/")) return <Link className={`${buttonStyles} ${className}`} {...props} href={props.href} />;
   return <a className={`${buttonStyles} ${className}`} {...props} />;
 }
 export function Arrow({ className = "" }: { className?: string }) {

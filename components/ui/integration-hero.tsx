@@ -26,7 +26,7 @@ export default function IntegrationHero() {
       <span className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/5 px-4 py-2 text-[10px] tracking-[1.5px] text-brand"><span aria-hidden="true" className="size-1.5 rounded-full bg-brand" />OUR BRANDS</span>
       <h2 id="brands-heading" className={`${headingStyles} mt-6`}>Different brands.<br /><span className="text-brand">Shared creative energy.</span></h2>
       <p className="mx-auto mt-6 max-w-[460px] text-sm leading-[1.9] text-muted">The brands we work with. The stories we bring to life.</p>
-      <ActionLink href="#work" className="mt-8 inline-flex items-center gap-5 rounded-lg border border-brand bg-brand px-6 py-3 text-xs text-black hover:bg-black hover:text-brand focus-visible:bg-black focus-visible:text-brand">Explore Our Work <Arrow className="text-lg" /></ActionLink>
+      <ActionLink href="/work" className="mt-8 inline-flex items-center gap-5 rounded-lg border border-brand bg-brand px-6 py-3 text-xs text-black hover:bg-black hover:text-brand focus-visible:bg-black focus-visible:text-brand">Explore Our Work <Arrow className="text-lg" /></ActionLink>
     </div>
     <div className="brand-carousel relative mx-auto mt-12 max-w-[1280px] min-[751px]:mt-16" role="region" aria-label="Brands we work with">
       <BrandRow items={brands.slice(0, split)} />
@@ -34,3 +34,4 @@ export default function IntegrationHero() {
     </div>
   </section>;
 }
+

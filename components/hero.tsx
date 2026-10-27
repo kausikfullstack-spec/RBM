@@ -1,4 +1,5 @@
 import { FiArrowDown, FiArrowUpRight } from "react-icons/fi";
+import Link from "next/link";
 import InversionCircleScrollAnimation from "./ui/inversion-circle-scroll-animation";
 import { FitWordmark } from "./ui/fit-wordmark";
 import { KineticText } from "./ui/kinetic-text";
@@ -11,7 +12,7 @@ export function Hero() {
         <span className="hero-kicker">RECYCLE THE ORDINARY. CREATE THE EXTRAORDINARY.</span>
         <h1 className="font-heading text-[clamp(48px,8vw,128px)] leading-[1.02] font-normal tracking-[-.025em]">Ideas worth<br />a second look<span className="text-brand">.</span></h1>
         <p className="max-w-[360px] text-sm leading-[1.8] min-[751px]:text-base">Fresh perspectives. Films that move you.<br />Stories that stay long after the last frame.</p>
-        <a href="#work" className="hero-cta">Explore our work <FiArrowUpRight aria-hidden="true" size={20} /></a>
+        <Link href="/work" className="hero-cta">Explore our work <FiArrowUpRight aria-hidden="true" size={20} /></Link>
       </div>
       <div>
         <FitWordmark fill={.93}><div className="font-display -ml-[.008em] whitespace-nowrap text-[13vw] leading-[1.1] font-normal tracking-[-.025em] text-brand min-[751px]:text-[clamp(80px,13.35vw,220px)]"><KineticText text="RECYCLE BIN MEDIA" /><span className="ml-2.5 inline-block align-top text-[.30em] leading-[0.9] tracking-normal">&#174;</span></div></FitWordmark>
@@ -20,3 +21,4 @@ export function Hero() {
     </div>
   </InversionCircleScrollAnimation>;
 }
+
