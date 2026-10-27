@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+.showreel-frame { --reel-scale: .72; --reel-radius: 28px; }
+.showreel-card { transform: scale(var(--reel-scale)); transform-origin: center; border-radius: var(--reel-radius); transition: none; }
+@media (max-width: 750px) { .showreel-frame { --reel-scale: .86; } }
+@media (prefers-reduced-motion: reduce) { .showreel-card { transform: none; border-radius: 0; } }
+
 .kinetic-text { display: inline-flex; flex-wrap: nowrap; vertical-align: top; }
 .kinetic-letter {
   display: inline-block;

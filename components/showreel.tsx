@@ -4,7 +4,35 @@ import { sampleVideo, showreelPoster } from "@/lib/content";
 import { Button } from "./ui";
 
 export function Showreel({ suspended, onPlay }: { suspended: boolean; onPlay: () => void }) {
+  const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const viewportHeight = window.innerHeight;
+      const top = section.getBoundingClientRect().top;
+      const progress = Math.min(1, Math.max(0, (viewportHeight - top) / (viewportHeight * .85)));
+      const eased = progress * progress * (3 - 2 * progress);
+      const startScale = window.innerWidth <= 750 ? .86 : .72;
+      section.style.setProperty("--reel-scale", String(reducedMotion.matches ? 1 : startScale + (1 - startScale) * eased));
+      section.style.setProperty("--reel-radius", `${reducedMotion.matches ? 0 : 28 * (1 - eased)}px`);
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
+    reducedMotion.addEventListener("change", schedule);
+    schedule();
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      reducedMotion.removeEventListener("change", schedule);
+    };
+  }, []);
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -22,8 +50,8 @@ export function Showreel({ suspended, onPlay }: { suspended: boolean; onPlay: ()
     document.addEventListener("visibilitychange", updatePlayback);
     return () => { observer.disconnect(); document.removeEventListener("visibilitychange", updatePlayback); video.pause(); };
   }, [suspended]);
-  return <section id="reel" className="w-full">
-    <Button onClick={onPlay} aria-label="Play studio showreel" className="group relative block h-[340px] w-full overflow-hidden bg-[#151515] text-left min-[751px]:h-[420px] min-[1101px]:h-[500px] min-[1600px]:h-[650px]">
+  return <section ref={sectionRef} id="reel" className="showreel-frame w-full">
+    <Button onClick={onPlay} aria-label="Play studio showreel" className="showreel-card group relative block h-[340px] w-full overflow-hidden bg-[#151515] text-left min-[751px]:h-[420px] min-[1101px]:h-[500px] min-[1600px]:h-[650px]">
       <video ref={videoRef} src={sampleVideo} poster={showreelPoster} muted loop playsInline preload="metadata" aria-label="Studio showreel preview" className="absolute inset-0 block size-full object-cover" />
       <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/65" />
       <span className="absolute top-5 left-5 text-[7px] tracking-[2px] text-foreground min-[751px]:top-[30px] min-[751px]:left-8 min-[751px]:text-[9px]">A LITTLE BIT OF WHAT WE DO</span>
