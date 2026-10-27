@@ -11,6 +11,8 @@ import { SocialSidebar } from "./social-sidebar";
 import { Skiper39 } from "./ui/skiper39";
 import ClickSpark from "./ClickSpark";
 import { WhatsAppButton } from "./whatsapp-button";
+import { SmoothScroll } from "./smooth-scroll";
+import IntegrationHero from "./ui/integration-hero";
 
 export function StudioHome() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,6 +29,7 @@ export function StudioHome() {
     return () => { document.body.style.overflow = previousOverflow; window.removeEventListener("keydown", onEscape); };
   }, [overlayOpen]);
   return <ClickSpark sparkColor="#fff" shape="line" sparkCount={8} sparkSize={14} sparkRadius={30} duration={500}>
+    <SmoothScroll suspended={overlayOpen} />
     <PointerGlow />
     <div className="min-[1101px]:pr-20">
     <Header menuOpen={menuOpen} onToggleMenu={() => setMenuOpen(!menuOpen)} onCloseMenu={() => setMenuOpen(false)} />
@@ -37,6 +40,7 @@ export function StudioHome() {
       <Ticker />
       <Skiper39 />
       <Portfolio onSelect={project => setSelection({ kind: "project", project })} />
+      <IntegrationHero />
       <Services />
       <Contact />
     </main>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Anton, Geist, Geist_Mono, Luckiest_Guy } from "next/font/google";
 import "./globals.css";
+import "lenis/dist/lenis.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${anton.variable} ${luckiestGuy.variable} h-full scroll-smooth scroll-pt-[30px] antialiased motion-reduce:scroll-auto`}
+      className={`${geistSans.variable} ${geistMono.variable} ${anton.variable} ${luckiestGuy.variable} h-full scroll-pt-[30px] antialiased`}
     >
       <body className="flex min-h-full flex-col overflow-x-clip bg-background font-sans text-foreground selection:bg-brand selection:text-black">{children}</body>
     </html>

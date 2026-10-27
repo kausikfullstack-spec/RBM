@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { sampleVideo, showreelPoster } from "@/lib/content";
 import { Button } from "./ui";
 
@@ -9,29 +11,28 @@ export function Showreel({ suspended, onPlay }: { suspended: boolean; onPlay: ()
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const viewportHeight = window.innerHeight;
-      const top = section.getBoundingClientRect().top;
-      const progress = Math.min(1, Math.max(0, (viewportHeight - top) / (viewportHeight * .85)));
-      const eased = progress * progress * (3 - 2 * progress);
-      const startScale = window.innerWidth <= 750 ? .86 : .72;
-      section.style.setProperty("--reel-scale", String(reducedMotion.matches ? 1 : startScale + (1 - startScale) * eased));
-      section.style.setProperty("--reel-radius", `${reducedMotion.matches ? 0 : 28 * (1 - eased)}px`);
-    };
-    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule, { passive: true });
-    reducedMotion.addEventListener("change", schedule);
-    schedule();
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
-      reducedMotion.removeEventListener("change", schedule);
-    };
+    gsap.registerPlugin(ScrollTrigger);
+    const media = gsap.matchMedia();
+    media.add({
+      desktop: "(min-width: 751px)",
+      mobile: "(max-width: 750px)",
+      reducedMotion: "(prefers-reduced-motion: reduce)",
+    }, context => {
+      if (context.conditions?.reducedMotion) {
+        gsap.set(section, { "--reel-scale": 1, "--reel-radius": "0px" });
+        return;
+      }
+      gsap.fromTo(section,
+        { "--reel-scale": context.conditions?.mobile ? .86 : .72, "--reel-radius": "28px" },
+        {
+          "--reel-scale": 1,
+          "--reel-radius": "0px",
+          ease: "power1.inOut",
+          scrollTrigger: { trigger: section, start: "top bottom", end: "top 15%", scrub: .6, invalidateOnRefresh: true },
+        },
+      );
+    });
+    return () => media.revert();
   }, []);
   useEffect(() => {
     const video = videoRef.current;

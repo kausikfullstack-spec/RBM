@@ -1,5 +1,37 @@
 @import "tailwindcss";
 
+.brand-carousel { mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent); }
+.brand-marquee-row { overflow: hidden; padding-block: 14px; }
+.brand-marquee-track { display: flex; width: max-content; animation: brand-marquee 100s linear infinite; }
+.brand-marquee-track[data-reverse="true"] { animation-direction: reverse; animation-duration: 110s; }
+.brand-marquee-group { display: flex; gap: 28px; flex-shrink: 0; margin: 0; padding: 0 28px 0 0; list-style: none; }
+.brand-wordmark-card { display: flex; width: 152px; flex-shrink: 0; flex-direction: column; align-items: center; gap: 16px; }
+.brand-logo-badge { position: relative; display: grid; width: 124px; height: 124px; place-items: center; padding: 16px; overflow: hidden; border: 1px solid var(--color-line); border-radius: 50%; background: var(--color-foreground); box-shadow: 0 6px 24px #0004; transition: transform .3s, border-color .3s, box-shadow .3s; }
+.brand-logo-badge[data-dark="true"], .brand-logo-badge[data-has-logo="false"] { background: #10100e; color: var(--color-brand); border-color: #fac90340; }
+.brand-logo-image { width: 100%; height: 80px; object-fit: contain; }
+.brand-wordmark-name { max-width: 100%; font-size: 18px; line-height: 1.2; text-align: center; overflow-wrap: anywhere; }
+.brand-caption { max-width: 150px; color: var(--color-muted); font-size: 11px; line-height: 1.5; text-align: center; transition: color .3s; }
+.brand-wordmark-card:hover .brand-logo-badge { transform: translateY(-6px) scale(1.04); border-color: var(--color-brand); box-shadow: 0 8px 28px #fac90322; }
+.brand-wordmark-card:hover .brand-caption { color: var(--color-brand); }
+.brand-carousel:hover .brand-marquee-track, .brand-carousel:focus-within .brand-marquee-track, .brand-carousel[data-paused="true"] .brand-marquee-track { animation-play-state: paused; }
+@keyframes brand-marquee { to { transform: translateX(-50%); } }
+@media (max-width: 750px) {
+  .brand-wordmark-card { width: 124px; }
+  .brand-logo-badge { width: 104px; height: 104px; padding: 14px; }
+  .brand-wordmark-name { font-size: 14px; }
+  .brand-marquee-group { gap: 20px; padding-right: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-carousel { mask-image: none; }
+  .brand-marquee-row { padding-inline: 5%; }
+  .brand-marquee-track { width: 100%; animation: none; }
+  .brand-marquee-group { width: 100%; flex-wrap: wrap; justify-content: center; padding: 0; gap: 12px; }
+  .brand-marquee-group[aria-hidden="true"] { display: none; }
+  .brand-wordmark-card { width: min(152px, calc(50% - 6px)); }
+  .brand-logo-badge, .brand-caption { transition: none; }
+  .brand-wordmark-card:hover .brand-logo-badge { transform: none; }
+}
+
 .showreel-frame { --reel-scale: .72; --reel-radius: 28px; }
 .showreel-card { transform: scale(var(--reel-scale)); transform-origin: center; border-radius: var(--reel-radius); transition: none; }
 @media (max-width: 750px) { .showreel-frame { --reel-scale: .86; } }

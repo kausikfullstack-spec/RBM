@@ -1,0 +1,68 @@
+export const brandNames = [
+  "Broadway",
+  "1937",
+  "Caldera",
+  "Someplace Else",
+  "Gelato Maestro",
+  "New Cathay",
+  "Ecom",
+  "Rajbari Bawali",
+  "Alipore Bungalow",
+  "Cafe Marrakech",
+  "Amber",
+  "Sollfege",
+  "Impakto",
+  "Ganpati",
+  "Golden",
+  "Choice",
+  "Ommpods",
+  "Foi",
+  "Utsav",
+  "Skolo",
+  "Aqua",
+  "South City",
+  "Fairweather Banquets",
+  "Playport Sports",
+  "Shoreline Cafe",
+  "Wow China",
+  "Wow Kulfi",
+  "Wow Instant",
+  "Coco Charge",
+  "Iqcbs",
+  "B Sirkar",
+  "Lakme Salon",
+  "Skipper",
+  "Skipper Online",
+  "Renoirr",
+  "Hardware",
+  "Lumiere",
+  "Rever",
+  "Simmaya",
+  "Gelato Fresco",
+];
+
+export type Brand = {
+  name: string;
+  logo?: string;
+  website?: string;
+  darkBadge?: boolean;
+};
+
+const verifiedLogos: Record<string, Omit<Brand, "name">> = {
+  Caldera: { logo: "/brands/caldera.webp", website: "https://www.caldera.beer/" },
+  "Rajbari Bawali": { logo: "/brands/rajbari-bawali.webp", website: "https://therajbari.com/" },
+  Sollfege: { logo: "/brands/sollfege.webp", website: "https://sollfege.com/" },
+  Impakto: { logo: "/brands/impakto.svg", website: "https://impakto.in/" },
+  Ommpods: { logo: "/brands/ommpods.svg", website: "https://ommpods.com/", darkBadge: true },
+  "South City": { logo: "/brands/south-city.webp", website: "https://www.southcitymall.in/" },
+  Iqcbs: { logo: "/brands/iqcbs.webp", website: "https://iqcbs.com/" },
+  "Lakme Salon": { logo: "/brands/lakme-salon.webp", website: "https://www.lakmesalon.in/", darkBadge: true },
+  Skipper: { logo: "/brands/skipper.webp", website: "https://skipperfurnishings.com/" },
+  Simmaya: { logo: "/brands/simmaya.webp", website: "https://www.thesimmaya.com/" },
+  "Gelato Fresco": { logo: "/brands/gelato-fresco.webp", website: "https://newgelatofresco.com/" },
+  Lumiere: { logo: "/brands/lumiere.webp", website: "https://www.lumierelamps.in/index.html" },
+  "Wow China": { logo: "/brands/wow-china.webp", website: "https://restaurantswowchina.wowmomo.com/" },
+  "Wow Kulfi": { logo: "/brands/wow-kulfi.webp", website: "https://restaurantswowkulfi.wowmomo.com/" },
+};
+
+export const brands: Brand[] = brandNames.map(name => ({ name, ...verifiedLogos[name] }));
