@@ -27,7 +27,7 @@ export function StudioHome() {
     <PointerGlow />
     <div className="min-[1101px]:pr-20">
     <Header menuOpen={menuOpen} onToggleMenu={() => setMenuOpen(!menuOpen)} onCloseMenu={() => setMenuOpen(false)} />
-    <main className="w-full overflow-hidden bg-background text-foreground">
+    <main className="w-full overflow-x-clip bg-background text-foreground">
       <Hero />
       <Showreel suspended={overlayOpen} onPlay={() => setSelection({ kind: "reel" })} />
       <About />

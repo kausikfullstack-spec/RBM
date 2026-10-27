@@ -1,5 +1,81 @@
 @import "tailwindcss";
 
+.hero-scroll-track { position: relative; height: max(300svh, 1950px); }
+.hero-scroll-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 650px;
+  overflow: hidden;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  --hero-circle: circle(0px at 50% 100%);
+}
+.hero-composition {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px 4.5% 0;
+}
+.hero-eyebrow, .hero-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 9px;
+  letter-spacing: 1.4px;
+}
+.hero-eyebrow { opacity: .7; }
+.hero-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 35px 0;
+  text-align: center;
+}
+.hero-kicker { font-size: 9px; letter-spacing: 2px; }
+.hero-wordmark { display: flex; justify-content: center; width: 100%; container-type: inline-size; }
+.hero-wordmark > div { flex-shrink: 0; width: max-content; max-width: none; margin-inline: 0; text-align: center; font-size: min(10cqw, 220px); }
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 12px 22px;
+  color: var(--color-brand);
+  font-size: 12px;
+  transition: background .2s, color .2s;
+}
+.hero-cta:hover, .hero-cta:focus-visible { background: var(--color-brand); color: var(--color-black); }
+.hero-cta:focus-visible, .hero-bottom a:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+.hero-bottom { margin-top: 16px; border-top: 1px solid currentColor; padding: 18px 0; }
+.hero-inverted {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--color-brand);
+  color: var(--color-black);
+  clip-path: var(--hero-circle);
+}
+.hero-inverted .text-brand, .hero-inverted .hero-cta { color: var(--color-black); }
+@media (max-width: 750px) {
+  .hero-scroll-track { height: max(300svh, 2040px); }
+  .hero-scroll-stage { min-height: 680px; }
+  .hero-composition { padding: 22px 5% 0; }
+  .hero-eyebrow, .hero-bottom { font-size: 7px; letter-spacing: .7px; }
+  .hero-kicker { max-width: 240px; font-size: 8px; line-height: 1.8; }
+  .hero-center { gap: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-track { height: auto; }
+  .hero-scroll-stage { position: relative; }
+  .hero-inverted { display: none; }
+  .hero-cta { transition: none; }
+}
+
 .social-sidebar {
   display: none;
   background: linear-gradient(180deg, var(--color-background), color-mix(in srgb, var(--color-brand) 7%, var(--color-background)) 50%, var(--color-background));
