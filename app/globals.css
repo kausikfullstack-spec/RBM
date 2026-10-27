@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+.social-sidebar {
+  display: none;
+  background: linear-gradient(180deg, var(--color-background), color-mix(in srgb, var(--color-brand) 7%, var(--color-background)) 50%, var(--color-background));
+}
+
+@media (min-width: 1101px) {
+  .social-sidebar:not([hidden]) {
+    display: flex;
+  }
+}
+
 @theme inline {
   --color-black: #000000;
   --color-brand: #fac903;

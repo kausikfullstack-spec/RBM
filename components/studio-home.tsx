@@ -7,6 +7,7 @@ import { Portfolio } from "./portfolio";
 import { About, Contact, Footer, Services, Ticker } from "./studio-sections";
 import { MediaDialog, type MediaSelection } from "./media-dialog";
 import { PointerGlow } from "./pointer-glow";
+import { SocialSidebar } from "./social-sidebar";
 
 export function StudioHome() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,6 +25,7 @@ export function StudioHome() {
   }, [overlayOpen]);
   return <>
     <PointerGlow />
+    <div className="min-[1101px]:pr-20">
     <Header menuOpen={menuOpen} onToggleMenu={() => setMenuOpen(!menuOpen)} onCloseMenu={() => setMenuOpen(false)} />
     <main className="w-full overflow-hidden bg-background text-foreground">
       <Hero />
@@ -35,6 +37,8 @@ export function StudioHome() {
       <Contact />
     </main>
     <Footer />
+    </div>
+    <SocialSidebar hidden={overlayOpen} />
     {selection && <MediaDialog selection={selection} onClose={() => setSelection(null)} onPlay={() => setSelection({ kind: "reel" })} />}
   </>;
 }
