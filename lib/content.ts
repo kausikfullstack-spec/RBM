@@ -6,10 +6,12 @@ export const services = [
   { title: "Production partners for agencies", description: "Your idea. Our production muscle. A collaborative crew to bring ambitious creative work to life." },
 ];
 export const navigation = [
-  { label: "The company", href: "/#about" },
+  { label: "The company", href: "/" },
   { label: "Our work", href: "/work" },
   { label: "What we do", href: "/#services" },
 ];
 export const sampleVideo = "/work/sample.mp4";
+export const brandFilmVideo = "/video/CGI_brand_film_creation_20261027170749.mp4";
 export const showreelPoster = "/work/showreel.jpg";
-export const contactEmail = "hello@recyclebinmedia.com";
+export const contactEmail = "mediarecyclebin@gmail.com";
+export const calendlyUrl = "https://calendly.com/mediarecyclebin/30min";

@@ -8,10 +8,10 @@ import IntegrationHero from "./ui/integration-hero";
 import { SiteShell, useSiteControls } from "./site-shell";
 
 function HomeContent() {
-  const { overlayOpen, openReel } = useSiteControls();
+  const { overlayOpen } = useSiteControls();
   return <main id="top" className="w-full overflow-x-clip bg-background text-foreground">
     <Hero />
-    <Showreel suspended={overlayOpen} onPlay={openReel} />
+    <Showreel suspended={overlayOpen} />
     <About />
     <Ticker />
     <Skiper39 />
