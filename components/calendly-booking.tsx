@@ -33,17 +33,12 @@ export function CalendlyDialog({ embedUrl, onClose }: { embedUrl: string; onClos
     return () => window.removeEventListener("message", ready);
   }, []);
 
-  return <dialog ref={dialogRef} aria-labelledby="calendly-dialog-title" onCancel={onClose} onClick={event => { if (event.target === event.currentTarget) onClose(); }} className="fixed inset-0 m-auto h-[calc(100dvh-24px)] max-h-[900px] w-[calc(100%-24px)] max-w-[1100px] overflow-hidden rounded-2xl border border-line bg-black p-0 text-foreground backdrop:bg-black/85 backdrop:backdrop-blur-sm min-[751px]:h-[calc(100dvh-64px)] min-[751px]:w-[calc(100%-64px)]">
-    <div className="flex h-full flex-col" data-lenis-prevent>
-      <div className="flex shrink-0 items-center justify-between gap-4 border-b border-line px-4 py-4 min-[751px]:px-6">
-        <div><p className="mb-1 text-[9px] tracking-[1.5px] text-brand">LET&apos;S MAKE SOME NOISE</p><h2 id="calendly-dialog-title" className="font-heading text-xl min-[751px]:text-2xl">Book a 30-minute call</h2></div>
-        <button type="button" onClick={onClose} aria-label="Close booking calendar" className="grid size-11 shrink-0 cursor-pointer place-items-center rounded-full border border-line bg-black text-brand transition-colors hover:bg-brand hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"><FiX aria-hidden="true" size={22} /></button>
-      </div>
-      <div className="relative min-h-0 flex-1">
-        {!loaded && <div role="status" className="pointer-events-none absolute inset-0 z-10 grid place-content-center gap-4 bg-black text-center text-xs text-muted"><span aria-hidden="true" className="mx-auto size-7 animate-spin rounded-full border-2 border-line border-t-brand motion-reduce:animate-none" />Loading Calendly...</div>}
-        <iframe ref={iframeRef} src={embedUrl} title="Calendly: book a 30-minute call with Recycle Bin Media" className="relative size-full border-0 bg-black" />
-      </div>
-      <div className="shrink-0 border-t border-line px-4 py-3 text-center text-[11px] min-[751px]:px-6"><a href={calendlyUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-brand underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">Open Calendly in a new tab <FiArrowUpRight aria-hidden="true" /></a></div>
+  return <dialog ref={dialogRef} aria-label="Book a 30-minute call" onCancel={onClose} onClick={event => { if (event.target === event.currentTarget) onClose(); }} className="fixed inset-0 m-auto h-[calc(100dvh-64px)] max-h-[900px] w-[calc(100%-24px)] max-w-[1000px] overflow-visible border-0 bg-transparent p-0 text-foreground backdrop:bg-black/85 backdrop:backdrop-blur-sm min-[751px]:w-[calc(100%-64px)]">
+    <button type="button" onClick={onClose} aria-label="Close booking calendar" className="absolute -top-7 right-0 z-20 grid size-10 cursor-pointer place-items-center rounded-full bg-black text-brand transition-colors hover:bg-brand hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand min-[751px]:-right-10 min-[751px]:top-0"><FiX aria-hidden="true" size={22} /></button>
+    {!loaded && <div role="status" className="pointer-events-none absolute inset-0 z-10 grid place-content-center gap-4 text-center text-xs text-muted"><span aria-hidden="true" className="mx-auto size-7 animate-spin rounded-full border-2 border-line border-t-brand motion-reduce:animate-none" />Loading Calendly...</div>}
+    {/* Calendly is cross-origin: crop its scrollbar on desktop while retaining scrolling inside the calendar. */}
+    <div className="size-full min-[751px]:overflow-hidden">
+      <iframe ref={iframeRef} src={embedUrl} title="Calendly: book a 30-minute call with Recycle Bin Media" data-lenis-prevent className={`h-full w-full border-0 bg-transparent min-[751px]:w-[calc(100%+20px)] ${loaded ? "opacity-100" : "opacity-0"}`} />
     </div>
   </dialog>;
 }
