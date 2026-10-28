@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
 
 export interface NotchedProjectCardProps {
+  id?: string;
   href: string;
   title: string;
   description?: string;
@@ -16,8 +17,8 @@ export interface NotchedProjectCardProps {
 }
 
 /** The notch uses the surrounding surface colour to curve around the arrow. */
-export function NotchedProjectCard({ href, title, description, image, imageAlt = "", badge, tags = [], monochrome = false, surface = "var(--color-background)", className = "" }: NotchedProjectCardProps) {
-  return <Link href={href} aria-label={`Discuss ${title}`} className={`group flex min-w-0 flex-col rounded-[28px] focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-brand ${className}`}>
+export function NotchedProjectCard({ id, href, title, description, image, imageAlt = "", badge, tags = [], monochrome = false, surface = "var(--color-background)", className = "" }: NotchedProjectCardProps) {
+  return <Link id={id} href={href} aria-label={`Discuss ${title}`} className={`group flex min-w-0 scroll-mt-10 flex-col rounded-[28px] focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-brand ${className}`}>
     <div className="relative isolate">
       <div className="relative aspect-[16/9] overflow-hidden rounded-[28px] bg-line">
         <Image src={image} alt={imageAlt} fill sizes="(max-width: 767px) 90vw, 45vw" className={`object-cover transition-[filter,transform] duration-500 group-hover:scale-[1.04] group-focus-visible:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100 motion-reduce:group-focus-visible:scale-100 ${monochrome ? "grayscale group-hover:grayscale-0 group-focus-visible:grayscale-0" : ""}`} />

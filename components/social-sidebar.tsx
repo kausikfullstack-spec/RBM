@@ -1,9 +1,9 @@
-import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const socialLinks = [
   { label: "Facebook", icon: FaFacebookF, href: process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://www.facebook.com/share/19XLEEbP8w/" },
-  { label: "Twitter", icon: FaTwitter, href: process.env.NEXT_PUBLIC_TWITTER_URL },
   { label: "Instagram", icon: FaInstagram, href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/recyclebinmedia/" },
+  { label: "LinkedIn", icon: FaLinkedinIn, href: "https://in.linkedin.com/company/recyclebinmediaa" },
 ];
 
 export function SocialSidebar({ hidden }: { hidden: boolean }) {

@@ -11,6 +11,16 @@ export const navigation = [
   { label: "Expertise", href: "/expertise" },
   { label: "Contact", href: "/contact" },
 ];
+export const expertiseNavigation = [
+  { label: "Video Editing", id: "video-editing" },
+  { label: "Graphic Design", id: "graphic-design" },
+  { label: "Performance Marketing", id: "performance-marketing" },
+  { label: "Influencer Marketing", id: "influencer-marketing" },
+  { label: "Branding & Designing", id: "branding-designing" },
+  { label: "Lead Generation", id: "lead-generation" },
+  { label: "E-commerce Solutions", id: "e-commerce-solutions" },
+  { label: "SEO Services", id: "seo-services" },
+];
 export const sampleVideo = "/work/sample.mp4";
 export const brandFilmVideo = "/video/CGI_brand_film_creation_20261027170749.mp4";
 export const showreelPoster = "/work/showreel.jpg";

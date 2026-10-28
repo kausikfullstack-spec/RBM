@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { expertiseNavigation } from "@/lib/content";
 import Link from "next/link";
 import { SiteShell } from "@/components/site-shell";
 import { Contact } from "@/components/studio-sections";
@@ -38,7 +39,7 @@ export default function ExpertisePage() {
     <ExpertiseTools />
     <section className="px-[5%] py-16 md:px-[4.5%] md:py-24">
       <div className="mb-10 flex flex-wrap items-end justify-between gap-5"><div><SectionLabel>OUR EXPERTISE</SectionLabel><h2 className="mt-5 text-4xl font-semibold tracking-tight md:text-5xl">Made to stand out.</h2></div><Link href="/work" className="text-sm text-brand hover:underline">Explore our work <Arrow /></Link></div>
-      <div className="grid gap-x-6 gap-y-14 md:grid-cols-2 md:gap-x-8 md:gap-y-16">{services.map(({ title, image, description, items }) => <NotchedProjectCard key={title} href={`/contact?service=${encodeURIComponent(title)}`} title={title} description={description} image={image} tags={items} monochrome />)}</div>
+      <div className="grid gap-x-6 gap-y-14 md:grid-cols-2 md:gap-x-8 md:gap-y-16">{services.map(({ title, image, description, items }, index) => <NotchedProjectCard id={expertiseNavigation[index].id} key={title} href={`/contact?service=${encodeURIComponent(title)}`} title={title} description={description} image={image} tags={items} monochrome />)}</div>
     </section>
     <Contact />
   </main></SiteShell>;
