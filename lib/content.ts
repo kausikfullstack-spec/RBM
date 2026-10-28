@@ -9,6 +9,8 @@ export const navigation = [
   { label: "The company", href: "/" },
   { label: "Our work", href: "/work" },
   { label: "What we do", href: "/#services" },
+  { label: "Expertise", href: "/expertise" },
+  { label: "Contact", href: "/contact" },
 ];
 export const sampleVideo = "/work/sample.mp4";
 export const brandFilmVideo = "/video/CGI_brand_film_creation_20261027170749.mp4";

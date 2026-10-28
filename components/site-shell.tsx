@@ -29,7 +29,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
   const overlayOpen = menuOpen || reelOpen || contentOverlayOpen || bookingUrl !== null;
 
   useEffect(() => {
-    const desktop = window.matchMedia("(min-width: 751px)");
+    const desktop = window.matchMedia("(min-width: 1001px)");
     const closeMobileMenu = (event: MediaQueryListEvent) => {
       if (event.matches) setMenuOpen(false);
     };
