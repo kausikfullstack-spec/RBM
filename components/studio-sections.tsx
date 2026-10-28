@@ -1,5 +1,6 @@
-import { contactEmail, services } from "@/lib/content";
-import { ActionLink, Arrow, buttonStyles, headingStyles, sectionStyles } from "./ui";
+import { contactEmail } from "@/lib/content";
+import { ActionLink, Arrow, headingStyles, sectionStyles } from "./ui";
+import { ServicesStack } from "./services-stack";
 import { CalendlyBooking } from "./calendly-booking";
 
 export function About() {
@@ -13,12 +14,7 @@ export function Ticker() {
   return <div aria-hidden="true" className="my-3.5 -rotate-2 overflow-hidden bg-brand py-[15px] text-black min-[751px]:py-[22px]"><div className="flex w-max animate-marquee motion-reduce:animate-none">{[0, 1, 2, 3].map(i => <span key={i} className="font-display whitespace-nowrap text-[23px] font-normal tracking-normal min-[751px]:text-[29px]">FRESH THINKING <b className="mx-[15px] text-[28px] font-normal min-[751px]:mx-[25px] min-[751px]:text-[35px]">&#10035;</b> BOLD STORIES <b className="mx-[15px] text-[28px] font-normal min-[751px]:mx-[25px] min-[751px]:text-[35px]">&#10035;</b> NO BORING FRAMES <b className="mx-[15px] text-[28px] font-normal min-[751px]:mx-[25px] min-[751px]:text-[35px]">&#10035;</b> </span>)}</div></div>;
 }
 export function Services() {
-  return <section id="services" className={`${sectionStyles} grid gap-[30px] border-t border-line min-[751px]:grid-cols-[1fr_1.4fr] min-[751px]:gap-[9%]`}>
-    <div className="relative">
-      {/* <SectionLabel>WHAT WE DO / 03</SectionLabel> */}
-      <h2 className={`${headingStyles} mt-[30px]`}>From <span className="text-brand">&ldquo;what if&rdquo;</span><br />to <span className="text-brand">&ldquo;that&apos;s it.&rdquo;</span></h2><p className="mt-[25px] text-[13px] leading-[1.8] text-muted">One creative partner.<br />Every part of the production.</p></div>
-    <div>{services.map((service, index) => <details key={service.title} className="group border-b border-line first:border-t"><summary className={`${buttonStyles} group/summary flex cursor-pointer list-none items-center gap-4 px-3 py-6 min-[751px]:gap-6 min-[751px]:py-[30px] [&::-webkit-details-marker]:hidden`}><span className="text-[10px] text-muted group-hover/summary:text-black group-focus-visible/summary:text-black">0{index + 1}</span><h3 className="font-heading flex-1 text-[17px] font-normal tracking-normal group-open:text-brand group-hover/summary:text-black group-focus-visible/summary:text-black min-[1101px]:text-xl">{service.title}</h3><span className="text-[25px] font-light text-brand transition-transform group-open:rotate-45 group-hover/summary:text-black group-focus-visible/summary:text-black">+</span></summary><p className="mb-[30px] ml-[38px] max-w-[440px] text-[13px] leading-[1.8] text-muted">{service.description}</p></details>)}</div>
-  </section>;
+  return <ServicesStack />;
 }
 export function Contact() {
   return <section id="contact" className={`${sectionStyles} bg-brand text-black`}>

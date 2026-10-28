@@ -18,7 +18,8 @@ function BrandRow({ items, reverse = false }: { items: Brand[]; reverse?: boolea
 }
 
 export default function IntegrationHero() {
-  const split = Math.ceil(brands.length / 2);
+  const rowSize = Math.ceil(brands.length / 3);
+  const rows = Array.from({ length: 3 }, (_, index) => brands.slice(index * rowSize, (index + 1) * rowSize));
 
   return <section id="brands" aria-labelledby="brands-heading" className="relative overflow-hidden border-y border-line bg-background py-[65px] min-[751px]:py-[85px] min-[1101px]:py-[115px]">
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-35 [background-image:radial-gradient(#fac90326_1px,transparent_1px)] [background-size:24px_24px]" />
@@ -29,8 +30,7 @@ export default function IntegrationHero() {
       <ActionLink href="/work" className="mt-8 inline-flex items-center gap-5 rounded-lg border border-brand bg-brand px-6 py-3 text-xs text-black hover:bg-black hover:text-brand focus-visible:bg-black focus-visible:text-brand">Explore Our Work <Arrow className="text-lg" /></ActionLink>
     </div>
     <div className="brand-carousel relative mx-auto mt-12 max-w-[1280px] min-[751px]:mt-16" role="region" aria-label="Brands we work with">
-      <BrandRow items={brands.slice(0, split)} />
-      <BrandRow items={brands.slice(split)} reverse />
+      {rows.map((items, index) => <BrandRow key={index} items={items} reverse={index === 1} />)}
     </div>
   </section>;
 }

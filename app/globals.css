@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+.services-stack { --stack-top: 129px; --stack-step: 64px; }
+.services-stack-deck { position: relative; isolation: isolate; }
+.services-stack-deck::after { content: ""; display: block; height: clamp(100px, 22svh, 220px); }
+.services-stack-card { position: sticky; top: calc(var(--stack-top) + var(--service-index) * var(--stack-step)); height: clamp(340px, calc(100svh - 345px), 500px); margin-bottom: 28px; border: 3px solid var(--color-brand); border-radius: 24px; background: var(--color-background); box-shadow: 0 -10px 35px #0005; }
+.services-stack-card:last-child { margin-bottom: 0; }
+.services-stack-card:focus-within { z-index: 5; }
+.services-stack-shade { background: linear-gradient(90deg, #000f 0%, #000e 30%, #0009 57%, #0002 100%); }
+@media (max-width: 1000px) {
+  .services-stack { --stack-top: 106px; --stack-step: 12px; }
+  .services-stack-card { height: clamp(400px, calc(100svh - 160px), 560px); }
+}
+@media (max-width: 600px) {
+  .services-stack-card { border-radius: 18px; }
+  .services-stack-card > a > div.relative { justify-content: flex-end; padding-bottom: 90px; }
+  .services-stack-shade { background: linear-gradient(0deg, #000 0%, #000e 45%, #0008 75%, #0003 100%); }
+}
+@media (max-height: 650px), (prefers-reduced-motion: reduce) {
+  .services-stack-card { position: relative; top: auto; }
+  .services-stack-deck::after { display: none; }
+}
+
 .tools-marquee { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; cursor: grab; user-select: none; mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
 .tools-marquee::-webkit-scrollbar { display: none; }
 .tools-marquee[data-dragging="true"] { cursor: grabbing; }
@@ -15,8 +36,8 @@
 
 .brand-carousel { mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent); }
 .brand-marquee-row { overflow: hidden; padding-block: 14px; }
-.brand-marquee-track { display: flex; width: max-content; animation: brand-marquee 100s linear infinite; }
-.brand-marquee-track[data-reverse="true"] { animation-direction: reverse; animation-duration: 110s; }
+.brand-marquee-track { display: flex; width: max-content; animation: brand-marquee 30s linear infinite; }
+.brand-marquee-track[data-reverse="true"] { animation-direction: reverse; animation-duration: 32s; }
 .brand-marquee-group { display: flex; gap: 28px; flex-shrink: 0; margin: 0; padding: 0 28px 0 0; list-style: none; }
 .brand-wordmark-card { display: flex; width: 152px; flex-shrink: 0; flex-direction: column; align-items: center; gap: 16px; }
 .brand-logo-badge { position: relative; display: grid; width: 124px; height: 124px; place-items: center; padding: 16px; overflow: hidden; border: 1px solid var(--color-line); border-radius: 50%; background: var(--color-foreground); box-shadow: 0 6px 24px #0004; transition: transform .3s, border-color .3s, box-shadow .3s; }

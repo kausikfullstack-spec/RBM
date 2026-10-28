@@ -1,8 +1,15 @@
 import { FiArrowDown, FiArrowUpRight } from "react-icons/fi";
 import Link from "next/link";
+import localFont from "next/font/local";
 import InversionCircleScrollAnimation from "./ui/inversion-circle-scroll-animation";
 import { FitWordmark } from "./ui/fit-wordmark";
 import { KineticText } from "./ui/kinetic-text";
+
+const loveOfThunder = localFont({
+  src: "../public/fonts/A Love of Thunder.ttf",
+  weight: "400",
+  display: "swap",
+});
 
 export function Hero() {
   return <InversionCircleScrollAnimation>
@@ -15,7 +22,7 @@ export function Hero() {
         <Link href="/work" className="hero-cta">Explore our work <FiArrowUpRight aria-hidden="true" size={20} /></Link>
       </div>
       <div>
-        <FitWordmark fill={.93}><div className="font-display -ml-[.008em] whitespace-nowrap text-[13vw] leading-[1.1] font-normal tracking-[-.025em] text-brand min-[751px]:text-[clamp(80px,13.35vw,220px)]"><KineticText text="RECYCLE BIN MEDIA" /><span className="ml-2.5 inline-block align-top text-[.30em] leading-[0.9] tracking-normal">&#174;</span></div></FitWordmark>
+        <FitWordmark fill={.80}><div className={`${loveOfThunder.className} -ml-[.008em] whitespace-nowrap text-[13vw] leading-[1.1] font-normal tracking-[-.025em] text-brand min-[751px]:text-[clamp(80px,13.35vw,220px)]`}><KineticText text="RECYCLE BIN MEDIA" /></div></FitWordmark>
         <div className="hero-bottom"><span>NEW PERSPECTIVES. NO OLD FORMULAS.</span><a href="#reel" className="flex items-center gap-3">SCROLL TO EXPLORE <FiArrowDown aria-hidden="true" size={18} /></a></div>
       </div>
     </div>
