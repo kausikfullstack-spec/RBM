@@ -165,7 +165,7 @@
 }
 .hero-cta:hover, .hero-cta:focus-visible { background: var(--color-brand); color: var(--color-black); }
 .hero-cta:focus-visible, .hero-bottom a:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
-.hero-bottom { margin-top: 16px; border-top: 1px solid currentColor; padding: 18px 0; }
+.hero-bottom { justify-content: center; margin-top: 16px; border-top: 1px solid currentColor; padding: 18px 0; }
 .hero-inverted {
   position: absolute;
   inset: 0;

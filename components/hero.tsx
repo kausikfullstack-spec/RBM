@@ -23,7 +23,7 @@ export function Hero() {
       </div>
       <div>
         <FitWordmark fill={.80}><div className={`${loveOfThunder.className} -ml-[.008em] whitespace-nowrap text-[13vw] leading-[1.1] font-normal tracking-[-.025em] text-brand min-[751px]:text-[clamp(80px,13.35vw,220px)]`}><KineticText text="RECYCLE BIN MEDIA" /></div></FitWordmark>
-        <div className="hero-bottom"><span>NEW PERSPECTIVES. NO OLD FORMULAS.</span><a href="#reel" className="flex items-center gap-3">SCROLL TO EXPLORE <FiArrowDown aria-hidden="true" size={18} /></a></div>
+        <div className="hero-bottom"><a href="#reel" className="flex items-center gap-3">SCROLL TO EXPLORE <FiArrowDown aria-hidden="true" size={18} /></a></div>
       </div>
     </div>
   </InversionCircleScrollAnimation>;

@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { FiArrowLeft, FiArrowRight, FiMaximize2, FiX } from "react-icons/fi";
+import { FiArrowLeft, FiArrowRight, FiArrowUpRight, FiMaximize2, FiX } from "react-icons/fi";
 import { projectBoards, type Project } from "@/lib/projects";
 import { useSiteControls } from "./site-shell";
 import { Button } from "./ui";
 
-export function ProjectGallery({ project }: { project: Project }) {
+export function ProjectGallery({ project, startAt = 1 }: { project: Project; startAt?: number }) {
   const boards = projectBoards(project);
   const [active, setActive] = useState<number | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -26,12 +26,12 @@ export function ProjectGallery({ project }: { project: Project }) {
   const next = () => setActive(index => index === null ? null : (index + 1) % boards.length);
 
   return <>
-    <section aria-labelledby="project-gallery-heading" className="px-[5%] pb-20 min-[751px]:px-[4.5%] min-[751px]:pb-28">
-      <div className="mb-8 flex flex-col items-start justify-between gap-5 border-t border-line pt-8 min-[601px]:flex-row min-[601px]:items-end"><h2 id="project-gallery-heading" className="font-heading text-4xl min-[751px]:text-5xl">Inside the work<span className="text-brand">.</span></h2><p className="font-mono text-[10px] text-muted">{boards.length} CREATIVE BOARDS</p></div>
+    <section aria-labelledby="project-gallery-heading" className="px-[5%] pt-16 pb-20 min-[751px]:px-[4.5%] min-[751px]:pt-24 min-[751px]:pb-28">
+      <div className="mb-10 flex flex-col items-start justify-between gap-5 min-[601px]:flex-row min-[601px]:items-end"><h2 id="project-gallery-heading" className="text-4xl font-semibold tracking-tight min-[751px]:text-5xl">The story, frame by frame<span className="text-brand">.</span></h2><p className="text-xs text-muted">Select an artwork for a closer look <FiMaximize2 aria-hidden="true" className="ml-2 inline" /></p></div>
       <div className="grid gap-6 min-[901px]:grid-cols-2">
-        {boards.map((board, index) => <figure key={board.number}>
-          <button type="button" onClick={() => setActive(index)} aria-label={`Enlarge ${project.name} board ${board.number}`} className="group relative block aspect-[3508/2480] w-full overflow-hidden border border-line bg-[#141414] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
-            <Image src={board.src} alt={`${project.name} creative board ${board.number} of ${boards.length}`} fill sizes="(max-width: 900px) 90vw, 45vw" className="object-contain" />
+        {boards.filter(board => board.number >= startAt).map((board, index) => <figure key={board.number} className={index % 5 === 0 ? "min-[901px]:col-span-2" : ""}>
+          <button type="button" onClick={() => setActive(board.number - 1)} aria-label={`Enlarge ${project.name} board ${board.number}`} className="group relative block aspect-[3508/2480] w-full overflow-hidden rounded-2xl border border-line bg-[#141414] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
+            <Image src={board.src} alt={`${project.name} creative board ${board.number} of ${boards.length}`} fill sizes={index % 5 === 0 ? "90vw" : "(max-width: 900px) 90vw, 45vw"} className="object-contain" />
             <span aria-hidden="true" className="absolute right-3 bottom-3 grid size-10 place-items-center rounded-full bg-black/80 text-brand transition-colors group-hover:bg-brand group-hover:text-black"><FiMaximize2 size={17} /></span>
           </button>
           <figcaption className="flex justify-between gap-4 py-3 font-mono text-[10px] text-muted"><span>{project.name}</span><span>{String(board.number).padStart(2, "0")} / {String(boards.length).padStart(2, "0")}</span></figcaption>
@@ -49,7 +49,7 @@ export function ProjectGallery({ project }: { project: Project }) {
         </div>
         <div className="mt-5 flex shrink-0 items-center justify-between gap-4">
           <Button onClick={previous} aria-label="Previous artwork" className="grid size-11 place-items-center rounded-full border border-line bg-black"><FiArrowLeft /></Button>
-          <a href={boards[active].original} target="_blank" rel="noopener noreferrer" className="text-xs text-brand underline underline-offset-4">Open original image ↗</a>
+          <a href={boards[active].original} target="_blank" rel="noopener noreferrer" className="text-xs text-brand underline underline-offset-4">Open original image <FiArrowUpRight aria-hidden="true" className="ml-1 inline" /></a>
           <Button onClick={next} aria-label="Next artwork" className="grid size-11 place-items-center rounded-full border border-line bg-black"><FiArrowRight /></Button>
         </div>
       </div>}
