@@ -8,7 +8,6 @@ export const services = [
 export const navigation = [
   { label: "The company", href: "/" },
   { label: "Our work", href: "/work" },
-  { label: "What we do", href: "/#services" },
   { label: "Expertise", href: "/expertise" },
   { label: "Contact", href: "/contact" },
 ];
