@@ -12,11 +12,11 @@ function HomeContent() {
   return <main id="top" className="w-full overflow-x-clip bg-background text-foreground">
     <Hero />
     <Showreel suspended={overlayOpen} />
+    <Portfolio />
     <Services />
     <About />
     <Ticker />
     <Skiper39 />
-    <Portfolio />
     <IntegrationHero />
     <Contact />
   </main>;
