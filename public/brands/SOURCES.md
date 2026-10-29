@@ -19,9 +19,15 @@ Retrieved on 27 October 2026. Logos below are original assets extracted from the
 | wow-china | [Website](https://restaurantswowchina.wowmomo.com/) | [Original](https://preprod-no-cache.singleinterface.com/files/outlet/logo/294187/wow_china_logo_png.webp) |
 | wow-kulfi | [Website](https://restaurantswowkulfi.wowmomo.com/) | [Original](https://restaurantswowkulfi.wowmomo.com/files/outlet/logo/339265/Business_Logoedited_png.webp) |
 
+## User-provided logos
+
+Added on 29 October 2026: Ganpati (`ganpati logo.jpeg`), Golden (`golden_refrigeration_logo.jpg`), Wow Instant (`wow_insta.jpg`), Coco Charge (`coco.jpg`), B Sirkar (`b sirkar logo.jpg`), and Rever (`rever logo.jpg`). Original uploaded files are used directly.
+
+Also added on 29 October 2026: 1937 (`1937 logo.jpg`), Aqua (`aqua logo.jpg`), Choice (`choice logo.jpg`), Skolo (`skolo logo.avif`), and Someplace Else (`someplace else logo.png`). Choice uses the white-background JPG for consistency with the carousel badges.
+
 ## Names retained without a logo
 
-Broadway; 1937; Someplace Else; Gelato Maestro; New Cathay; Ecom; Alipore Bungalow; Cafe Marrakech; Amber; Ganpati; Golden; Choice; Foi; Utsav; Skolo; Aqua; Fairweather Banquets; Playport Sports; Shoreline Cafe; Wow Instant; Coco Charge; B Sirkar; Skipper Online; Renoirr; Hardware; Rever.
+Broadway; Gelato Maestro; New Cathay; Ecom; Alipore Bungalow; Cafe Marrakech; Amber; Foi; Utsav; Fairweather Banquets; Playport Sports; Shoreline Cafe; Skipper Online; Renoirr; Hardware.
 
 These names were researched with Kolkata as the location. No logo has been substituted where the business identity or artwork could not be verified. Some businesses have no reachable official site, an expired/parked domain, or multiple unrelated namesakes.
 

@@ -49,6 +49,17 @@ export type Brand = {
 };
 
 const verifiedLogos: Record<string, Omit<Brand, "name">> = {
+  "1937": { logo: "/brands/1937 logo.jpg" },
+  Aqua: { logo: "/brands/aqua logo.jpg" },
+  Choice: { logo: "/brands/choice logo.jpg" },
+  Skolo: { logo: "/brands/skolo logo.avif" },
+  "Someplace Else": { logo: "/brands/someplace else logo.png" },
+  Ganpati: { logo: "/brands/ganpati logo.jpeg" },
+  Golden: { logo: "/brands/golden_refrigeration_logo.jpg" },
+  "Wow Instant": { logo: "/brands/wow_insta.jpg" },
+  "Coco Charge": { logo: "/brands/coco.jpg" },
+  "B Sirkar": { logo: "/brands/b sirkar logo.jpg" },
+  Rever: { logo: "/brands/rever logo.jpg" },
   Caldera: { logo: "/brands/caldera.webp", website: "https://www.caldera.beer/" },
   "Rajbari Bawali": { logo: "/brands/rajbari-bawali.webp", website: "https://therajbari.com/" },
   Sollfege: { logo: "/brands/sollfege.webp", website: "https://sollfege.com/" },
