@@ -7,6 +7,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   return <Link href={`/work/${project.slug}`} className="group block rounded-sm focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-brand">
     <div className="relative aspect-[3508/2480] overflow-hidden border border-line bg-[#141414]">
       <Image src={projectImage(project)} alt={`${project.name} — selected creative work`} fill sizes="(max-width: 750px) 90vw, 45vw" className="object-contain transition-transform duration-500 group-hover:scale-[1.015] motion-reduce:transition-none" />
+      <span aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 border-4 border-transparent transition-colors duration-200 group-hover:border-brand group-focus-visible:border-brand motion-reduce:transition-none" />
       <span aria-hidden="true" className="absolute top-4 left-4 rounded-full bg-black/80 px-3 py-1.5 font-mono text-[10px] text-foreground">{String(index + 1).padStart(2, "0")}</span>
       <span aria-hidden="true" className="absolute right-4 bottom-4 grid size-11 place-items-center rounded-full bg-brand text-black transition-transform group-hover:rotate-45 motion-reduce:transition-none"><FiArrowUpRight size={23} /></span>
     </div>
