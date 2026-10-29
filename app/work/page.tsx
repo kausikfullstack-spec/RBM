@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { WorkArchive } from "@/components/work-archive";
 import { Contact } from "@/components/studio-sections";
+import { PointerEyes } from "@/components/pointer-eyes";
 
 export const metadata: Metadata = {
   title: "Our Work | Recycle Bin Media",
@@ -9,10 +10,15 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return <main id="top" className="bg-background text-foreground">
-    <section className="px-[5%] pt-16 pb-16 text-center md:pt-24 md:pb-24">
-      <p className="text-[10px] tracking-[.25em] text-brand">REAL BRANDS. IDEAS BROUGHT TO LIFE.</p>
-      <h1 className="mt-5 text-[clamp(58px,8vw,118px)] leading-none font-bold tracking-[-.06em]">Our Work<span className="text-brand">.</span></h1>
-      <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-muted md:text-lg">Different brands. Different stories.<br />Creative work with a point of view, from the first idea to the final detail.</p>
+    <section className="px-[5%] py-12 text-center sm:py-16 md:py-24">
+      <p className="mx-auto max-w-full text-[9px] leading-relaxed tracking-[.16em] text-brand sm:text-[10px] sm:tracking-[.25em]">REAL BRANDS. IDEAS BROUGHT TO LIFE.</p>
+      <h1 className="mx-auto mt-5 text-[10vw] leading-[1.08] font-bold tracking-[-.06em] sm:text-[min(8vw,118px)] sm:leading-none">
+        <span className="sr-only">Look once. wonder twice.</span>
+        <span aria-hidden="true">
+          <span className="block whitespace-nowrap"><span className="inline-flex items-baseline">L<PointerEyes />k</span> once<span className="text-brand">.</span></span>
+          <span className="block whitespace-nowrap">wonder twice<span className="text-brand">.</span></span>
+        </span>
+      </h1>
     </section>
     <WorkArchive />
     <Contact />
