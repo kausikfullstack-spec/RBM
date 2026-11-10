@@ -1,3 +1,5 @@
+import imageDimensions from "./project-image-dimensions.json";
+
 export type Project = {
   slug: string;
   name: string;
@@ -7,9 +9,18 @@ export type Project = {
   sourceFolder: string;
   boardCount: number;
   coverBoard: number;
+  originalFiles?: string[];
+  video?: { src: string; title: string };
 };
 
 export const projects: Project[] = [
+  {
+    slug: "anjohn", name: "ANJOHN", category: "Fashion",
+    summary: "Salon style, academy stories and beauty in detail. Social grids and seasonal campaigns for A N John Salons & Academy.",
+    services: ["Social content", "Creative direction", "Seasonal campaigns"],
+    sourceFolder: "anjohn", boardCount: 12, coverBoard: 1,
+    originalFiles: ["A N John Grid (1).png", "A N John Grid (2).png", "Academy Griod Look.png", "Artboard 1.png", "Anjohn Design 3.jpg", "Get your nails done.png", "Giveaway Grid 2.png", "A N John Valentine_s Day 2.png", "Valentine_s Day 3.png", "Story 1.png", "Story 2.png", "Story 3.png"],
+  },
   {
     slug: "flavours-of-india", name: "Flavours of India", category: "Food & drink",
     summary: "Food, fusion, and festive storytelling. A collection of menu-led visuals, seasonal creatives, and food and drink content for Flavours of India.",
@@ -46,7 +57,13 @@ export function projectImage(project: Project, board = project.coverBoard) {
   return `/work/projects/${project.slug}/${String(board).padStart(2, "0")}.webp`;
 }
 
+export function projectImageDimensions(project: Project, board = project.coverBoard) {
+  const key = `${project.slug}/${board}` as keyof typeof imageDimensions;
+  return imageDimensions[key] ?? { width: 3508, height: 2480 };
+}
+
 export function originalProjectImage(project: Project, board: number) {
+  if (project.originalFiles) return `/work/projects/${project.slug}/${encodeURIComponent(project.originalFiles[board - 1])}`;
   return `/RBM%20brand%20book/${encodeURIComponent(project.sourceFolder)}/Artboard%20${board}.jpg`;
 }
 
@@ -54,6 +71,7 @@ export function projectBoards(project: Project) {
   return Array.from({ length: project.boardCount }, (_, index) => ({
     number: index + 1,
     src: projectImage(project, index + 1),
+    ...projectImageDimensions(project, index + 1),
     original: originalProjectImage(project, index + 1),
   }));
 }

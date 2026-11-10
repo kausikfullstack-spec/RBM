@@ -28,10 +28,10 @@ export function ProjectGallery({ project, startAt = 1 }: { project: Project; sta
   return <>
     <section aria-labelledby="project-gallery-heading" className="px-[5%] pt-16 pb-20 min-[751px]:px-[4.5%] min-[751px]:pt-24 min-[751px]:pb-28">
       <div className="mb-10 flex flex-col items-start justify-between gap-5 min-[601px]:flex-row min-[601px]:items-end"><h2 id="project-gallery-heading" className="text-4xl font-semibold tracking-tight min-[751px]:text-5xl">The story, frame by frame<span className="text-brand">.</span></h2><p className="text-xs text-muted">Select an artwork for a closer look <FiMaximize2 aria-hidden="true" className="ml-2 inline" /></p></div>
-      <div className="grid gap-6 min-[901px]:grid-cols-2">
-        {boards.filter(board => board.number >= startAt).map((board, index) => <figure key={board.number} className={index % 5 === 0 ? "min-[901px]:col-span-2" : ""}>
-          <button type="button" onClick={() => setActive(board.number - 1)} aria-label={`Enlarge ${project.name} board ${board.number}`} className="group relative block aspect-[3508/2480] w-full overflow-hidden rounded-2xl border border-line bg-[#141414] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
-            <Image src={board.src} alt={`${project.name} creative board ${board.number} of ${boards.length}`} fill sizes={index % 5 === 0 ? "90vw" : "(max-width: 900px) 90vw, 45vw"} className="object-contain" />
+      <div className="columns-1 gap-6 min-[901px]:columns-2">
+        {boards.filter(board => board.number >= startAt).map(board => <figure key={board.number} className="mb-6 break-inside-avoid">
+          <button type="button" onClick={() => setActive(board.number - 1)} aria-label={`Enlarge ${project.name} board ${board.number}`} className="group relative block w-full overflow-hidden rounded-2xl border border-line bg-[#141414] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
+            <Image src={board.src} alt={`${project.name} creative board ${board.number} of ${boards.length}`} width={board.width} height={board.height} sizes="(max-width: 900px) 90vw, 45vw" className="block h-auto w-full" />
             <span aria-hidden="true" className="absolute right-3 bottom-3 grid size-10 place-items-center rounded-full bg-black/80 text-brand transition-colors group-hover:bg-brand group-hover:text-black"><FiMaximize2 size={17} /></span>
           </button>
           <figcaption className="flex justify-between gap-4 py-3 font-mono text-[10px] text-muted"><span>{project.name}</span><span>{String(board.number).padStart(2, "0")} / {String(boards.length).padStart(2, "0")}</span></figcaption>
@@ -45,7 +45,7 @@ export function ProjectGallery({ project, startAt = 1 }: { project: Project; sta
           <Button onClick={() => setActive(null)} aria-label="Close artwork viewer" className="grid size-11 shrink-0 place-items-center rounded-full border border-line bg-black"><FiX size={22} /></Button>
         </div>
         <div className="relative flex min-h-0 flex-1 items-center justify-center">
-          <Image src={boards[active].src} alt={`${project.name} creative board ${active + 1}`} width={2000} height={1414} unoptimized className="max-h-full w-auto max-w-full object-contain" />
+          <Image src={boards[active].src} alt={`${project.name} creative board ${active + 1}`} width={boards[active].width} height={boards[active].height} unoptimized className="max-h-full w-auto max-w-full object-contain" />
         </div>
         <div className="mt-5 flex shrink-0 items-center justify-between gap-4">
           <Button onClick={previous} aria-label="Previous artwork" className="grid size-11 place-items-center rounded-full border border-line bg-black"><FiArrowLeft /></Button>

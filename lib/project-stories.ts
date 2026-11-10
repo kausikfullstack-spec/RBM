@@ -9,6 +9,18 @@ export type ProjectStory = {
 };
 
 export const projectStories: Record<string, ProjectStory> = {
+  anjohn: {
+    headline: "Salon style. A signature of its own.",
+    intro: "For A N John Salons & Academy, hair, beauty and education share one visual world. This collection brings together salon grids, academy stories, nail creatives and seasonal campaigns.",
+    directionTitle: "Let the craft take centre stage.",
+    direction: "Neutral tones and considered typography give hair and beauty imagery room to stand out. Editorial grids sit alongside playful reminders, while seasonal designs introduce softer colour and a more personal voice.",
+    statement: "Every detail is part of the style.", accent: "#c9c3b9",
+    craft: [
+      { title: "Style across the grid", text: "Coordinated layouts connect salon imagery, products and everyday brand messages." },
+      { title: "Beauty in the details", text: "Hair, nails and academy stories each have space within the wider brand identity." },
+      { title: "Seasonal stories", text: "Occasion-led artwork brings a personal voice to the salon and academy brand." },
+    ],
+  },
   "flavours-of-india": {
     headline: "A feast for the eyes. A reason to stay.",
     intro: "Food has a story before the first bite. For Flavours of India, this collection brings dishes, drinks and festive moments into a visual world built around appetite and discovery.",

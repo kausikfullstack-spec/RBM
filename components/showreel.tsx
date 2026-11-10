@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { brandFilmVideo } from "@/lib/content";
+import { homepageShowreelVideo } from "@/lib/content";
 
 export function Showreel({ suspended }: { suspended: boolean }) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -50,9 +50,9 @@ export function Showreel({ suspended }: { suspended: boolean }) {
     document.addEventListener("visibilitychange", updatePlayback);
     return () => { observer.disconnect(); document.removeEventListener("visibilitychange", updatePlayback); video.pause(); };
   }, [suspended]);
-  return <section ref={sectionRef} id="reel" aria-label="Recycle Bin Media brand film" className="showreel-frame w-full">
+  return <section ref={sectionRef} id="reel" aria-label="Recycle Bin Media drone showreel" className="showreel-frame w-full">
     <div className="showreel-card w-full overflow-hidden bg-black">
-      <video ref={videoRef} src={brandFilmVideo} autoPlay muted loop playsInline preload="metadata" aria-label="Recycle Bin Media CGI brand film" className="block h-auto w-full" />
+      <video ref={videoRef} src={homepageShowreelVideo} poster="/video/homepage-drone-showreel.jpg" width={1920} height={1080} autoPlay muted loop playsInline controls={false} disablePictureInPicture disableRemotePlayback preload="metadata" aria-label="Recycle Bin Media drone showreel" className="pointer-events-none block h-auto w-full" />
     </div>
   </section>;
 }

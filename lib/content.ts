@@ -22,6 +22,7 @@ export const expertiseNavigation = [
   { label: "SEO Services", id: "seo-services" },
 ];
 export const brandFilmVideo = "/video/CGI_brand_film_creation_20261027170749.mp4";
+export const homepageShowreelVideo = "/video/homepage-drone-showreel.mp4";
 export const showreelPoster = "/work/showreel.jpg";
 export const contactEmail = "mediarecyclebin@gmail.com";
 export const calendlyUrl = "https://calendly.com/mediarecyclebin/30min";
