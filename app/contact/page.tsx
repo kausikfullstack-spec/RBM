@@ -1,3 +1,4 @@
+import { BrochureDownload } from "@/components/brochure-download";
 import type { Metadata } from "next";
 import { Allura } from "next/font/google";
 import { Suspense } from "react";
@@ -6,7 +7,7 @@ import Image from "next/image";
 import founderPortrait from "@/public/jo.jpg";
 import { SiteShell } from "@/components/site-shell";
 import { CalendlyBooking } from "@/components/calendly-booking";
-import { contactEmail } from "@/lib/content";
+import { brochureEmail, brochureWebsite, brochurePhones, contactEmail } from "@/lib/content";
 import { Arrow, SectionLabel } from "@/components/ui";
 
 const signature = Allura({ subsets: ["latin"], weight: "400", display: "swap" });
@@ -28,7 +29,7 @@ async function ContactContent({ searchParams }: ContactPageProps) {
   const subject = service ? `Let's talk: ${service}` : "Let's talk about a project";
   return <main id="top">
    
-    <section className="px-[5%] pt-16 pb-16 text-center md:pt-24 md:pb-24"><p className="text-[10px] tracking-[.25em] text-brand">GOOD WORK STARTS WITH A CONVERSATION.</p><h1 className="mt-5 text-[clamp(58px,8vw,118px)] leading-none font-bold tracking-[-.06em]">Contact<span className="text-brand">.</span></h1><p className="mx-auto mt-6 max-w-lg text-sm leading-7 text-muted md:text-lg">A new idea. A fresh brief. Your next big move.<br />We&apos;d love to hear about it.</p></section>
+    <section className="px-[5%] pt-16 pb-16 text-center md:pt-24 md:pb-24"><p className="text-[10px] tracking-[.25em] text-brand">GOOD WORK STARTS WITH A CONVERSATION.</p><h1 className="mt-5 text-[clamp(58px,8vw,118px)] leading-none font-bold tracking-[-.06em]">Contact<span className="text-brand">.</span></h1><p className="mx-auto mt-6 max-w-lg text-sm leading-7 text-muted md:text-lg">A new idea. A fresh brief. Your next big move.<br />We&apos;d love to hear about it.</p><BrochureDownload className="mt-8" /></section>
 
 
      <section aria-labelledby="founder-message" className="mx-auto grid max-w-[1280px] gap-10 px-[5%] pt-14 pb-16 md:grid-cols-[.8fr_1.2fr] md:items-center md:gap-16 md:pt-20 md:pb-20">
@@ -65,6 +66,7 @@ async function ContactContent({ searchParams }: ContactPageProps) {
       {/* <span className="text-[10px] tracking-[.2em] text-muted">02 / START A CHAT</span> */}
       <span className="mt-4 flex items-center justify-between text-2xl group-hover:text-brand">Say hello on WhatsApp <Arrow className="text-brand" /></span><span className="mt-3 block text-xs text-muted">+91 79809 09989</span></a></div>
     </section>
+    <section aria-label="More contact details" className="mx-auto max-w-[1280px] px-[5%] pb-16"><SectionLabel>BASED IN KOLKATA. OPEN TO YOUR NEXT IDEA.</SectionLabel><div className="mt-6 flex flex-wrap gap-x-10 gap-y-5 text-sm"><a className="text-brand hover:underline" href={`mailto:${brochureEmail}`}>{brochureEmail}</a>{brochurePhones.map(phone => <a key={phone.href} className="hover:text-brand" href={phone.href}>{phone.label}</a>)}<a className="text-muted hover:text-brand" href={`https://${brochureWebsite}`}>{brochureWebsite}</a></div></section>
     <section className="flex flex-col justify-between gap-10 bg-brand px-[5%] py-16 text-black md:flex-row md:items-center md:px-[4.5%] md:py-24"><div><SectionLabel dark>PREFER A CONVERSATION?</SectionLabel><h2 className="mt-6 font-heading text-[clamp(48px,7vw,100px)] leading-none">Let&apos;s talk it through.</h2><p className="mt-6 max-w-lg text-sm leading-7">Book a 30-minute call. Bring your ideas, questions and ambitions. We&apos;ll bring a fresh perspective.</p></div><CalendlyBooking /></section>
   </main>;
 }

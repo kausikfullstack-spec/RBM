@@ -1,3 +1,4 @@
+import { BrochureCapabilities } from "@/components/brochure-details";
 import type { Metadata } from "next";
 import { expertiseNavigation } from "@/lib/content";
 import Link from "next/link";
@@ -41,6 +42,7 @@ export default function ExpertisePage() {
       <div className="mb-10 flex flex-wrap items-end justify-between gap-5"><div><SectionLabel>OUR EXPERTISE</SectionLabel><h2 className="mt-5 text-4xl font-semibold tracking-tight md:text-5xl">Made to stand out.</h2></div><Link href="/work" className="text-sm text-brand hover:underline">Explore our work <Arrow /></Link></div>
       <div className="grid gap-x-6 gap-y-14 md:grid-cols-2 md:gap-x-8 md:gap-y-16">{services.map(({ title, image, description, items }, index) => <NotchedProjectCard id={expertiseNavigation[index].id} key={title} href={`/contact?service=${encodeURIComponent(title)}`} title={title} description={description} image={image} tags={items} monochrome />)}</div>
     </section>
+    <BrochureCapabilities />
     <Contact />
   </main></SiteShell>;
 }

@@ -214,6 +214,71 @@
   }
 }
 
+@layer components {
+  .star-button {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 12px 18px;
+    border: 2px solid var(--color-brand);
+    border-radius: 6px;
+    background: var(--color-brand);
+    color: #181818;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.25;
+    white-space: nowrap;
+    box-shadow: 0 0 0 #fac90300;
+    transition: background .3s, color .3s, box-shadow .3s, transform .2s;
+  }
+  .star-button-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 9px; }
+  .star-button:is(:hover, :focus-visible) {
+    background: transparent;
+    color: var(--color-brand);
+    box-shadow: 0 0 25px #fac90345;
+  }
+  .star-button:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 5px; }
+  .star-button:active { transform: scale(.97); }
+  .star-button:disabled { cursor: not-allowed; opacity: .5; transform: none; }
+  .star-button:disabled:hover { background: var(--color-brand); color: #181818; box-shadow: none; }
+  .star-button:disabled .star-button-spark { display: none; }
+  .star-button-spark {
+    position: absolute;
+    z-index: 0;
+    top: 45%;
+    left: 45%;
+    width: var(--spark-size);
+    color: #fff7cf;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(.25);
+    transition: top .8s cubic-bezier(.05,.83,.43,.96), left .8s cubic-bezier(.05,.83,.43,.96), opacity .25s, transform .6s;
+  }
+  .star-button-spark svg { display: block; width: 100%; height: auto; }
+  .star-button-spark-1 { --spark-size: 22px; --spark-top: -45%; --spark-left: -9%; }
+  .star-button-spark-2 { --spark-size: 12px; --spark-top: -25%; --spark-left: 21%; }
+  .star-button-spark-3 { --spark-size: 6px; --spark-top: 90%; --spark-left: 25%; }
+  .star-button-spark-4 { --spark-size: 8px; --spark-top: 85%; --spark-left: 80%; }
+  .star-button-spark-5 { --spark-size: 16px; --spark-top: 12%; --spark-left: 99%; }
+  .star-button-spark-6 { --spark-size: 6px; --spark-top: -18%; --spark-left: 65%; }
+  .star-button:is(:hover, :focus-visible) .star-button-spark {
+    top: var(--spark-top);
+    left: var(--spark-left);
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 6px #fac90380);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .star-button, .star-button-spark { transition: none; }
+    .star-button:active { transform: none; }
+    .star-button-spark { display: none; }
+  }
+}
+
 @theme inline {
   --color-black: #000000;
   --color-brand: #fac903;

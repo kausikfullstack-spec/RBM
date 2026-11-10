@@ -1,4 +1,5 @@
 "use client";
+import { BrochurePartnerships } from "./brochure-details";
 import { Hero } from "./hero";
 import { Showreel } from "./showreel";
 import { Portfolio } from "./portfolio";
@@ -18,6 +19,7 @@ function HomeContent() {
     <Ticker />
     <Skiper39 />
     <IntegrationHero />
+    <BrochurePartnerships />
     <Contact />
   </main>;
 }

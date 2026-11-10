@@ -21,8 +21,15 @@ export const expertiseNavigation = [
   { label: "E-commerce Solutions", id: "e-commerce-solutions" },
   { label: "SEO Services", id: "seo-services" },
 ];
-export const sampleVideo = "/work/sample.mp4";
 export const brandFilmVideo = "/video/CGI_brand_film_creation_20261027170749.mp4";
 export const showreelPoster = "/work/showreel.jpg";
 export const contactEmail = "mediarecyclebin@gmail.com";
 export const calendlyUrl = "https://calendly.com/mediarecyclebin/30min";
+
+// Additional contact details listed in the company brochure.
+export const brochureEmail = "letsrewstore@recyclebinmedia.in";
+export const brochureWebsite = "www.recyclebinmedia.in";
+export const brochurePhones = [
+  { label: "+91 79809 09989", href: "tel:+917980909989" },
+  { label: "+91 82403 13964", href: "tel:+918240313964" },
+];

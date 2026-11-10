@@ -1,3 +1,4 @@
+import { BrochurePartnerships } from "@/components/brochure-details";
 import type { Metadata } from "next";
 import { WorkArchive } from "@/components/work-archive";
 import { Contact } from "@/components/studio-sections";
@@ -21,6 +22,7 @@ export default function WorkPage() {
       </h1>
     </section>
     <WorkArchive />
+    <BrochurePartnerships />
     <Contact />
   </main>;
 }
