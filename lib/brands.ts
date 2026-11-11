@@ -120,7 +120,7 @@ const verifiedLogos: Record<string, Omit<Brand, "name">> = {
   Simmaya: { logo: "/brands/simmaya.webp", website: "https://www.thesimmaya.com/" },
   "Gelato Fresco": { logo: "/brands/gelato-fresco.webp", website: "https://newgelatofresco.com/" },
   Lumiere: { logo: "/brands/lumiere.webp", website: "https://www.lumierelamps.in/index.html" },
-  "Wow China": { logo: "/brands/wow-china.webp", website: "https://restaurantswowchina.wowmomo.com/" },
+  "Wow China": { logo: "/work/projects/wow-china/WOW_China-logo.jpg", website: "https://restaurantswowchina.wowmomo.com/" },
   "Wow Kulfi": { logo: "/brands/wow-kulfi.webp", website: "https://restaurantswowkulfi.wowmomo.com/" },
 };
 

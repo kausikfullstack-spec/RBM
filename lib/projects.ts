@@ -15,6 +15,13 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "wow-china", name: "Wow China", category: "Food & drink",
+    summary: "Bold red creatives, food close-ups, and flavours from across Asia. Social content and video stories for Wow China.",
+    services: ["Social content", "Food photography", "Campaigns", "Video Studio"],
+    sourceFolder: "wow_china", boardCount: 13, coverBoard: 1,
+    originalFiles: ["WhatsApp Image 2026-11-11 at 3.18.07 PM (1).jpeg","WhatsApp Image 2026-11-11 at 3.18.07 PM.jpeg","WhatsApp Image 2026-11-11 at 3.19.05 PM.jpeg","WhatsApp Image 2026-11-11 at 3.19.06 PM.jpeg","WhatsApp Image 2026-11-11 at 3.19.25 PM.jpeg","WhatsApp Image 2026-11-11 at 3.19.43 PM (1).jpeg","WhatsApp Image 2026-11-11 at 3.19.43 PM (2).jpeg","WhatsApp Image 2026-11-11 at 3.19.43 PM (3).jpeg","WhatsApp Image 2026-11-11 at 3.19.43 PM.jpeg","WhatsApp Image 2026-11-11 at 3.20.16 PM (1).jpeg","WhatsApp Image 2026-11-11 at 3.20.16 PM (2).jpeg","WhatsApp Image 2026-11-11 at 3.20.16 PM.jpeg","WhatsApp Image 2026-11-11 at 3.22.48 PM.jpeg"],
+  },
+  {
     slug: "anjohn", name: "ANJOHN", category: "Fashion",
     summary: "Salon style, academy stories and beauty in detail. Social grids and seasonal campaigns for A N John Salons & Academy.",
     services: ["Social content", "Creative direction", "Seasonal campaigns"],

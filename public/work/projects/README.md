@@ -4,6 +4,7 @@ The portfolio uses the six projects in `public/RBM brand book`:
 
 | Project | Original folder | Artboards |
 | --- | --- | --- |
+| Wow China | wow_china | 13 |
 | Flavours of India | foi | 14 |
 | Hideaway | hideaway | 14 |
 | Kinky's | kinkys | 5 |

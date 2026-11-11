@@ -9,6 +9,18 @@ export type ProjectStory = {
 };
 
 export const projectStories: Record<string, ProjectStory> = {
+  "wow-china": {
+    headline: "Big flavour. A world to explore.",
+    intro: "Noodles, familiar favourites, and dishes from across Asia come together in this collection for Wow China. Bold food creatives sit alongside everyday dining moments and video stories.",
+    directionTitle: "Give every craving a place in the feed.",
+    direction: "A strong red palette connects playful headlines, food close-ups, and travel-inspired menu stories. Portraits of diners bring a different perspective, while video adds movement to the collection.",
+    statement: "A little curiosity. A lot of flavour.", accent: "#e8453c",
+    craft: [
+      { title: "Food in focus", text: "Noodles, sides, and sharing plates lead the compositions, with texture and detail close to the camera." },
+      { title: "A recognisable red", text: "Bold colour and expressive typography connect individual dishes with the wider brand." },
+      { title: "Stories across Asia", text: "Postcards, landmarks, and menu features bring a sense of discovery to the food." },
+    ],
+  },
   anjohn: {
     headline: "Salon style. A signature of its own.",
     intro: "For A N John Salons & Academy, hair, beauty and education share one visual world. This collection brings together salon grids, academy stories, nail creatives and seasonal campaigns.",

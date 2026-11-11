@@ -298,5 +298,57 @@
   "utsav/10": {
     "width": 2000,
     "height": 1414
+  },
+  "wow-china/1": {
+    "width": 1080,
+    "height": 1350
+  },
+  "wow-china/2": {
+    "width": 1080,
+    "height": 1350
+  },
+  "wow-china/3": {
+    "width": 1080,
+    "height": 1350
+  },
+  "wow-china/4": {
+    "width": 1080,
+    "height": 1350
+  },
+  "wow-china/5": {
+    "width": 1080,
+    "height": 1350
+  },
+  "wow-china/6": {
+    "width": 1080,
+    "height": 1350
+  },
+  "wow-china/7": {
+    "width": 1080,
+    "height": 1350
+  },
+  "wow-china/8": {
+    "width": 1080,
+    "height": 1350
+  },
+  "wow-china/9": {
+    "width": 1080,
+    "height": 1350
+  },
+  "wow-china/10": {
+    "width": 1080,
+    "height": 1350
+  },
+  "wow-china/11": {
+    "width": 1080,
+    "height": 1350
+  },
+  "wow-china/12": {
+    "width": 1080,
+    "height": 1350
+  },
+  "wow-china/13": {
+    "width": 1080,
+    "height": 1350
   }
 }

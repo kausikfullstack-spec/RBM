@@ -6,9 +6,11 @@ import { FiArrowLeft, FiArrowRight, FiArrowUpRight, FiMaximize2, FiX } from "rea
 import { projectBoards, type Project } from "@/lib/projects";
 import { useSiteControls } from "./site-shell";
 import { Button } from "./ui";
+import videoData from "@/lib/project-videos.json";
 
-export function ProjectGallery({ project, startAt = 1 }: { project: Project; startAt?: number }) {
+export function ProjectGallery({ project, startAt = 1, excludeVideoId, includeOpeningBoard = false }: { project: Project; startAt?: number; excludeVideoId?: string; includeOpeningBoard?: boolean }) {
   const boards = projectBoards(project);
+  const videos = (videoData as Record<string, { id: string; title: string; aspectRatio: string }[]>)[project.slug] ?? [];
   const [active, setActive] = useState<number | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const { setContentOverlayOpen } = useSiteControls();
@@ -28,13 +30,14 @@ export function ProjectGallery({ project, startAt = 1 }: { project: Project; sta
   return <>
     <section aria-labelledby="project-gallery-heading" className="px-[5%] pt-16 pb-20 min-[751px]:px-[4.5%] min-[751px]:pt-24 min-[751px]:pb-28">
       <div className="mb-10 flex flex-col items-start justify-between gap-5 min-[601px]:flex-row min-[601px]:items-end"><h2 id="project-gallery-heading" className="text-4xl font-semibold tracking-tight min-[751px]:text-5xl">The story, frame by frame<span className="text-brand">.</span></h2><p className="text-xs text-muted">Select an artwork for a closer look <FiMaximize2 aria-hidden="true" className="ml-2 inline" /></p></div>
-      <div className="columns-1 gap-6 min-[901px]:columns-2">
-        {boards.filter(board => board.number >= startAt).map(board => <figure key={board.number} className="mb-6 break-inside-avoid">
+      <div className="mx-auto max-w-[1440px] columns-1 gap-4 min-[481px]:columns-2 min-[901px]:columns-3 min-[1280px]:columns-4">
+        {videos.filter(video => video.id !== excludeVideoId).map(video => <figure key={video.id} className="mb-4 break-inside-avoid"><div className="overflow-hidden rounded-2xl border border-line bg-black"><iframe src={`/video-player/${encodeURIComponent(video.id)}`} title={video.title} allow="autoplay; fullscreen" allowFullScreen loading="lazy" className="block w-full border-0" style={{ aspectRatio: video.aspectRatio }} /></div><figcaption className="flex justify-between gap-3 py-2 font-mono text-[10px] text-muted"><span>{video.title}</span><span>VIDEO</span></figcaption></figure>)}
+        {boards.filter(board => board.number >= startAt || (includeOpeningBoard && board.number === 1)).map(board => <figure key={board.number} className="mb-4 break-inside-avoid">
           <button type="button" onClick={() => setActive(board.number - 1)} aria-label={`Enlarge ${project.name} board ${board.number}`} className="group relative block w-full overflow-hidden rounded-2xl border border-line bg-[#141414] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
-            <Image src={board.src} alt={`${project.name} creative board ${board.number} of ${boards.length}`} width={board.width} height={board.height} sizes="(max-width: 900px) 90vw, 45vw" className="block h-auto w-full" />
+            <Image src={board.src} alt={`${project.name} creative board ${board.number} of ${boards.length}`} width={board.width} height={board.height} sizes="(max-width: 480px) 90vw, (max-width: 900px) 45vw, (max-width: 1279px) 30vw, 23vw" className="block h-auto w-full" />
             <span aria-hidden="true" className="absolute right-3 bottom-3 grid size-10 place-items-center rounded-full bg-black/80 text-brand transition-colors group-hover:bg-brand group-hover:text-black"><FiMaximize2 size={17} /></span>
           </button>
-          <figcaption className="flex justify-between gap-4 py-3 font-mono text-[10px] text-muted"><span>{project.name}</span><span>{String(board.number).padStart(2, "0")} / {String(boards.length).padStart(2, "0")}</span></figcaption>
+          <figcaption className="flex justify-between gap-3 py-2 font-mono text-[10px] text-muted"><span>{project.name}</span><span>{String(board.number).padStart(2, "0")} / {String(boards.length).padStart(2, "0")}</span></figcaption>
         </figure>)}
       </div>
     </section>

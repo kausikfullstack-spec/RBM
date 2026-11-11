@@ -64,7 +64,7 @@ export default function CardFanCarousel({ projects }: { projects: Project[] }) {
         className="group absolute top-10 block w-[64%] max-w-[380px] origin-bottom rounded-xl border-4 border-line bg-[#141414] shadow-[0_16px_45px_#0009] transition-colors hover:border-brand focus-visible:border-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand min-[751px]:top-14 min-[751px]:w-[34%]"
       >
         <div className="relative aspect-[3508/2480] overflow-hidden rounded-t-lg">
-          <Image src={projectImage(project)} alt={`${project.name} — selected creative work`} fill sizes="(max-width: 750px) 64vw, 380px" className="object-contain" />
+          <Image src={project.slug === "wow-china" ? "/work/projects/wow-china/WOW_China-logo.jpg" : projectImage(project)} alt={project.slug === "wow-china" ? "Wow China logo" : `${project.name} selected creative work`} fill sizes="(max-width: 750px) 64vw, 380px" className="object-contain" />
           <span className="absolute left-3 top-3 rounded-full bg-black/80 px-2.5 py-1 font-mono text-[9px] text-foreground">{String(index + 1).padStart(2, "0")}</span>
         </div>
         <div className="flex min-h-20 items-center justify-between gap-3 px-4 py-4 min-[751px]:min-h-24 min-[751px]:px-5">
